@@ -1,0 +1,2 @@
+include  ':couplingmodule',':mobile', ':youtubedataapi', ':newbasemodule', ':bitrytplayerapi', ':socialauthapi'
+include ':pageindicatorlibrary'

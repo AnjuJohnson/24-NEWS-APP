@@ -1,0 +1,14 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ott.android.flowerstv" >
+    <application>
+        <service android:name=".FirebaseMessageService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="8f9469294c25bf5b030e52cf15c84157018e9c18" />
+    </application>
+</manifest>

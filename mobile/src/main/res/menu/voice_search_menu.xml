@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.javarticles.android.SearchableActivity" >
+    <item
+        android:id="@+id/voice_search_menu"
+        android:icon="@drawable/ic_mic"
+        android:title="@string/text_search"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="ifRoom|collapseActionView" />
+</menu>

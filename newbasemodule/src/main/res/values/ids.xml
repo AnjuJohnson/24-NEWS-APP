@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--  App Intro Ids  -->
+    <item name="app_intro_card_title" type="id"/>
+    <item name="app_intro_card_description" type="id"/>
+    <item name="app_intro_card_poster" type="id"/>
+    <item name="app_intro_card_text_container" type="id"/>
+    <item name="icon_name" type="id"/>
+    <item name="home_photo" type="id"/>
+    <item name="textMovieListLiskes" type="id"/>
+    <item name="textMovieTitle" type="id"/>
+    <item name="textMovieImage" type="id"/>
+    <item name="textMovieListComments" type="id"/>
+    <item name="new_relase_photo" type="id"/>
+    <item name="iv_banner_image" type="id"/>
+    <item name="iv_like" type="id"/>
+    <item name="tv_comments_count" type="id"/>
+    <item name="tv_like_count" type="id"/>
+    <item name="snapTextView" type="id"/>
+    <item name="snap_recyclerView" type="id"/>
+    <item name="imageView" type="id"/>
+    <item name="nameTextView" type="id"/>
+
+</resources>

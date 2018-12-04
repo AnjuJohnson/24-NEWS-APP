@@ -1,0 +1,63 @@
+
+apply plugin: 'com.android.application'
+
+
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.tfApp.android.newstv"
+        minSdkVersion 21
+        targetSdkVersion 27
+        versionCode 9
+        versionName "1.7"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            shrinkResources false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+    configurations.all {
+        resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+
+}
+configurations {
+    all*.exclude module: "support-v4"
+}
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    api project(':couplingmodule')
+    implementation 'com.balysv:material-ripple:1.0.2'
+    implementation 'com.kaopiz:kprogresshud:1.1.0'
+    implementation('com.yarolegovich:sliding-root-nav:1.1.0') {
+        exclude group: 'com.android.support'
+    }
+    implementation 'com.google.code.gson:gson:2.8.5'
+    androidTestImplementation "android.arch.persistence.room:testing:$rootProject.room_version"
+    implementation "android.arch.lifecycle:extensions:$rootProject.archLifecycleVersion"
+    annotationProcessor "android.arch.lifecycle:compiler:$rootProject.archLifecycleVersion"
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.3'
+    implementation 'org.sufficientlysecure:html-textview:3.6'
+    implementation 'com.ss.bannerslider:bannerslider:1.8.0'
+
+}
+
+

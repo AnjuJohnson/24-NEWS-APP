@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="transparent">#00ffffff</color>
+
+    <color name="black_video_overlay">#57000000</color>
+    <color name="black_tint">#30000000</color>
+    <color name="btn_color">#590b1a</color>
+    <color name="pin_normal">#6B767E</color>
+    <color name="primary">#590b1a</color>
+    <color name="primary_dark">#590b1a</color>
+    <color name="accent">#590b1a</color>
+    <color name="secondary_text">#757575</color>
+    <color name="white">#ffffff</color>
+    <color name="white_variant">#C4CFCC</color>
+    <color name="bottombar_variant">#d82440</color>
+</resources>
