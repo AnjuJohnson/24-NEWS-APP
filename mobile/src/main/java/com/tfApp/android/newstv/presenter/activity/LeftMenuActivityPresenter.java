@@ -12,6 +12,13 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
+import com.ottapp.android.basemodule.app.GlideApp;
+import com.ottapp.android.basemodule.models.MenuDataModel;
+import com.ottapp.android.basemodule.presenters.activity.BaseActivityPresenter;
+import com.ottapp.android.basemodule.services.MenuServices;
+import com.ottapp.android.basemodule.view.base.fragment.BaseFragment;
 import com.tfApp.android.newstv.R;
 import com.tfApp.android.newstv.app.FlowersTvApp;
 import com.tfApp.android.newstv.menu.DrawerAdapter;
@@ -20,20 +27,11 @@ import com.tfApp.android.newstv.menu.SimpleItem;
 import com.tfApp.android.newstv.presenter.activity.iview.LeftMenuActivityIView;
 import com.tfApp.android.newstv.utils.MenuPositionComparator;
 import com.tfApp.android.newstv.view.fragment.AboutFragment;
-import com.tfApp.android.newstv.view.fragment.FavouriteVideoGridFragment;
 import com.tfApp.android.newstv.view.fragment.HomeFragment;
 import com.tfApp.android.newstv.view.fragment.HtmlViewFragment;
 import com.tfApp.android.newstv.view.fragment.InfoFragment;
 import com.tfApp.android.newstv.view.fragment.LanguageFragment;
 import com.tfApp.android.newstv.view.fragment.YoutubeVideoGridVideoGridFragment;
-import com.bumptech.glide.request.target.SimpleTarget;
-import com.bumptech.glide.request.transition.Transition;
-import com.google.gson.Gson;
-import com.ottapp.android.basemodule.app.GlideApp;
-import com.ottapp.android.basemodule.models.MenuDataModel;
-import com.ottapp.android.basemodule.presenters.activity.BaseActivityPresenter;
-import com.ottapp.android.basemodule.services.MenuServices;
-import com.ottapp.android.basemodule.view.base.fragment.BaseFragment;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -44,16 +42,10 @@ import java.util.List;
 
 import static com.tfApp.android.newstv.view.activity.MenuLeftActivity.POS_MORE_SCREE;
 import static com.tfApp.android.newstv.view.activity.MenuLeftActivity.POS_MORE_SCREEN;
-import static com.tfApp.android.newstv.view.fragment.YoutubeVideoGridVideoGridFragment.LOAD_DATA;
 
 public class LeftMenuActivityPresenter<I extends LeftMenuActivityIView> extends BaseActivityPresenter<I> implements DrawerAdapter.OnItemSelectedListener {
     private static final String ACTION_HOME = "home";
 
-    /* private static final String ACTION_FRESH_ON_FLOWERS = "fresh_on_flowers";
-     private static final String ACTION_TV_SHOWS = "tv_shows";
-     private static final String ACTION_COMEDY = "comedy";
-     private static final String ACTION_EVENTS = "events";
-     private static final String ACTION_MOVIES = "movies";*/
     private static final String ACTION_LANGUAGE = "language";
     private static final String ACTION_SETTINGS = "settings";
     private static final String ACTION_FAVOURITES = "favourites";
@@ -72,7 +64,7 @@ public class LeftMenuActivityPresenter<I extends LeftMenuActivityIView> extends 
     private List<DrawerItem> drawerItems;
     private List<MenuDataModel> menuModels;
     private SimpleItem simpleItem;
-    private String ACTION_LANGUAGE_CHOICE;
+
 
 
     public LeftMenuActivityPresenter(I iView) {
@@ -97,9 +89,6 @@ public class LeftMenuActivityPresenter<I extends LeftMenuActivityIView> extends 
 
     //setting the data into the adapter
     public void setAdapter() {
-
-        //   if (DataStore.getInstance().getDynamicMenuList() != null) {
-//            menuModels = DataStore.getInstance().getDynamicMenuList();
 
         menuModels = MenuServices.getServices().getAll(); //here we get all the menu item stored in room db
         if (menuModels != null) {
@@ -320,14 +309,12 @@ public class LeftMenuActivityPresenter<I extends LeftMenuActivityIView> extends 
                 dialog = builder.create();
                 dialog.dismiss();
             });
-         //   builder.setNegativeButton("Cancel", (dialog, which) -> adapter.setSelected(prev_pos));
 
 
             try {
                 dialog.show();
             } catch (Exception ignored) {
                 //bad window token happened
-//                getIView().finish();
                 dialog = builder.create();
                 dialog.dismiss();
             }
@@ -353,9 +340,6 @@ public class LeftMenuActivityPresenter<I extends LeftMenuActivityIView> extends 
                             getIView().getRootView().setImageBitmap(resource);
                             getIView().getMenuRootView().setImageBitmap(resource);
                             saveBitmap(resource);
-                            //DrawableCompat.setTint( getIView().getMenuRootView().getDrawable(), ContextCompat.getColor(getIView().getContext(), R.color.black_tint));
-                            // getIView().getRootView().setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getIView().getContext(),R.color.black_tint)));
-                            // getIView().getMenuRootView().setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getIView().getContext(),R.color.black_tint)));
                         } catch (NullPointerException ignored) {
                             ignored.printStackTrace();
                         }

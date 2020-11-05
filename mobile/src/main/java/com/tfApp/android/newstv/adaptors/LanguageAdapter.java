@@ -6,16 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.tfApp.android.newstv.R;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.RequestOptions;
-import com.google.gson.Gson;
-import com.ottapp.android.basemodule.app.GlideApp;
-import com.ottapp.android.basemodule.models.AssetVideosDataModel;
 import com.ottapp.android.basemodule.models.LanguageModel;
+import com.tfApp.android.newstv.R;
 
 import java.util.List;
 
@@ -25,7 +19,7 @@ public class LanguageAdapter extends RecyclerView.Adapter<LanguageAdapter.ViewHo
     private OnLanguageSelectionListener onItemSelectionListener;
 
 
-    public LanguageAdapter(List<LanguageModel> detailsModl,OnLanguageSelectionListener onItemSelectionListener) {
+    public LanguageAdapter(List<LanguageModel> detailsModl, OnLanguageSelectionListener onItemSelectionListener) {
         this.detailsModel = detailsModl;
         this.onItemSelectionListener = onItemSelectionListener;
 
@@ -48,14 +42,7 @@ public class LanguageAdapter extends RecyclerView.Adapter<LanguageAdapter.ViewHo
 
             holder.nameTextView.setText(title);
 
-          /*  } else {
-                if (media.getFavourite() == 1) {
-                    holder.iv_favourite.setBackgroundResource(R.drawable.ic_favorite_active);
-                } else {
-                    holder.iv_favourite.setBackgroundResource(R.drawable.ic_favorite_inactive);
-                }
-            }*/
-          if(title.equals("English")){
+          if(title.equals("Malayalam")){
               holder.languageBox.setChecked(true);
               media.setSelected(1);
           }
@@ -66,8 +53,7 @@ public class LanguageAdapter extends RecyclerView.Adapter<LanguageAdapter.ViewHo
             }
 
             if (position == getItemCount() - 1 ) {
-               // if (onItemSelectionListener != null)
-                  //  onItemSelectionListener.onMoreItemsNeeded();
+
             }
         }
 

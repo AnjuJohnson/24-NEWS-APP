@@ -2,7 +2,6 @@ package com.tfApp.android.newstv.view.activity;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
@@ -10,19 +9,14 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ottapp.android.basemodule.view.base.activity.BaseActivity;
 import com.tfApp.android.newstv.R;
 import com.tfApp.android.newstv.presenter.activity.HolderActivityPresenterImpl;
 import com.tfApp.android.newstv.presenter.activity.iview.HolderActivityIView;
-import com.tfApp.android.newstv.view.fragment.VideoDetailsFragment;
-import com.ottapp.android.basemodule.utils.ScreenSwitchEvent;
-import com.ottapp.android.basemodule.view.base.activity.BaseActivity;
 
-import org.greenrobot.eventbus.EventBus;
-
-public class HolderActivity extends BaseActivity<HolderActivityPresenterImpl<HolderActivityIView>,HolderActivityIView> implements View.OnClickListener, HolderActivityIView {
+public class HolderActivity extends BaseActivity<HolderActivityPresenterImpl<HolderActivityIView>, HolderActivityIView> implements View.OnClickListener, HolderActivityIView {
     private static final int SEARCH_REQUEST = 1234;
     public static final int POS_MORE_SCREE = 24;
     public static final int POS_MORE_SEARCH = 27;
@@ -36,15 +30,8 @@ public class HolderActivity extends BaseActivity<HolderActivityPresenterImpl<Hol
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_holder);
-
-//        ic_action_search = findViewById(R.id.ic_action_search);
-//        ic_action_home = findViewById(R.id.ic_action_home);
         ic_genre = findViewById(R.id.gendre);
         ic_title = findViewById(R.id.title);
-//        ic_action_search.setOnClickListener(this);
-//        ic_action_home.setOnClickListener(this);
-//
-//        logoImage = findViewById(R.id.bitryt_logo);
         if (activityPresenter == null)
             activityPresenter = new HolderActivityPresenterImpl(this);
         eventListener();
@@ -62,7 +49,7 @@ public class HolderActivity extends BaseActivity<HolderActivityPresenterImpl<Hol
     public void setGenre(String name){
        ic_genre.setText(name);
     }
-//
+
     public void hideLogoWithGenres(String title){
 
         ic_title.setVisibility(View.VISIBLE);
@@ -105,11 +92,7 @@ public class HolderActivity extends BaseActivity<HolderActivityPresenterImpl<Hol
 
     @Override
     public void onClick(View v) {
-//        if (v == ic_action_home) {
-//            EventBus.getDefault().post(new ScreenSwitchEvent(7));
-//        } else if (v == ic_action_search) {
-//            startActivityForResult(new Intent(this, SearchActivityScreen.class), SEARCH_REQUEST);
-//        }
+
     }
 
     @Override
@@ -148,7 +131,7 @@ public class HolderActivity extends BaseActivity<HolderActivityPresenterImpl<Hol
 
     @Override
     public View getTopBar() {
-        return findViewById(R.id.top_bar);
+        return null;
     }
 
     @Override
@@ -159,15 +142,6 @@ public class HolderActivity extends BaseActivity<HolderActivityPresenterImpl<Hol
     @Override
     public void onBackPressed() {
         activityPresenter.onBackPressed();
-//        if (getSupportFragmentManager().getBackStackEntryCount() > 0 ){
-//            getSupportFragmentManager().popBackStack();
-//        } else {
-//           askExitDialog();
-//        }
-    //    getPresenter().onBackPressed();
-//        if (activityPresenter == null || activityPresenter.onBackPressed()) {
-//            askExitDialog();
-//        }
     }
 
     private AlertDialog dialog;

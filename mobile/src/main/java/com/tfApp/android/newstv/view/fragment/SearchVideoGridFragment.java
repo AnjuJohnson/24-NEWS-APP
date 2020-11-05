@@ -13,14 +13,14 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.ottapp.android.basemodule.models.AssetVideosDataModel;
+import com.ottapp.android.basemodule.models.UserProfileModel;
+import com.ottapp.android.basemodule.view.base.fragment.BaseFragment;
 import com.tfApp.android.newstv.R;
 import com.tfApp.android.newstv.presenter.fragment.SearchFragmentPresenter;
 import com.tfApp.android.newstv.presenter.fragment.iview.SearchFragmentIView;
 import com.tfApp.android.newstv.utils.StaticValues;
 import com.tfApp.android.newstv.view.activity.MediaStreamingActivityExoPlayer;
-import com.ottapp.android.basemodule.models.AssetVideosDataModel;
-import com.ottapp.android.basemodule.models.UserProfileModel;
-import com.ottapp.android.basemodule.view.base.fragment.BaseFragment;
 
 /**
  * Created by George PJ on 22-02-2018.

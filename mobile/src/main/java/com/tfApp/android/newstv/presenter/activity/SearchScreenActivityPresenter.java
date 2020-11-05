@@ -5,14 +5,14 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 
-import com.tfApp.android.newstv.R;
-import com.tfApp.android.newstv.app.FlowersTvApp;
-import com.tfApp.android.newstv.presenter.activity.iview.SearchScreenActivityIView;
-import com.tfApp.android.newstv.view.fragment.SearchVideoGridFragment;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.ottapp.android.basemodule.app.GlideApp;
 import com.ottapp.android.basemodule.presenters.activity.BaseActivityPresenter;
+import com.tfApp.android.newstv.R;
+import com.tfApp.android.newstv.app.FlowersTvApp;
+import com.tfApp.android.newstv.presenter.activity.iview.SearchScreenActivityIView;
+import com.tfApp.android.newstv.view.fragment.SearchVideoGridFragment;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -29,7 +29,6 @@ public class SearchScreenActivityPresenter<I extends SearchScreenActivityIView> 
     //to set the fragmentito the activity
     public void setFragment() {
         fragment = new SearchVideoGridFragment();
-        // FragmentManager fragmentManager = getSupportFragmentManager();
         android.app.FragmentManager fragmentManager1 = getIView().getActivity().getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager1.beginTransaction();
         fragmentTransaction.replace(R.id.search_fragment, fragment);

@@ -8,12 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 
+import com.kaopiz.kprogresshud.KProgressHUD;
+import com.ottapp.android.basemodule.view.base.fragment.BaseFragment;
 import com.tfApp.android.newstv.R;
 import com.tfApp.android.newstv.presenter.fragment.HtmlViewerFragmentPresenter;
 import com.tfApp.android.newstv.presenter.fragment.iview.HtmlViewerFragmentIView;
 import com.tfApp.android.newstv.view.activity.MenuLeftActivity;
-import com.kaopiz.kprogresshud.KProgressHUD;
-import com.ottapp.android.basemodule.view.base.fragment.BaseFragment;
 
 /**
  * Created by George PJ on 22-02-2018.

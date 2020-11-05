@@ -20,6 +20,7 @@ public class CategoryViewModel extends AndroidViewModel {
     public CategoryViewModel(@NonNull Application application) {
         super(application);
         mAllMenus = CategoryService.getServices().getAllLive(0);
+
     }
 
     public LiveData<List<CategoryListDataModel>> getAllCategory() { return mAllMenus; }

@@ -8,13 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.ottapp.android.basemodule.view.base.fragment.BaseFragment;
 import com.tfApp.android.newstv.R;
 import com.tfApp.android.newstv.presenter.fragment.InfoFragmentPresenter;
 import com.tfApp.android.newstv.presenter.fragment.iview.InfoFragmentIView;
 import com.tfApp.android.newstv.view.activity.HolderActivity;
-import com.ottapp.android.basemodule.view.base.fragment.BaseFragment;
 
-public class InfoFragment extends BaseFragment<InfoFragmentPresenter<InfoFragmentIView>,InfoFragmentIView> implements InfoFragmentIView {
+public class InfoFragment extends BaseFragment<InfoFragmentPresenter<InfoFragmentIView>, InfoFragmentIView> implements InfoFragmentIView {
     public static final String TITLE_TEXT = "Settings";
 
     private View view;

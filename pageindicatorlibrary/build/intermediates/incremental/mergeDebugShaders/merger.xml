@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="D:\24App\pageindicatorlibrary\src\main\shaders"/></dataSet><dataSet config="debug"><source path="D:\24App\pageindicatorlibrary\src\debug\shaders"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/media/zinedroid/Zinedroid/Workspace/NewProjects/24APP NEW/24Appnew/24App/pageindicatorlibrary/src/main/shaders"/></dataSet><dataSet config="debug"><source path="/media/zinedroid/Zinedroid/Workspace/NewProjects/24APP NEW/24Appnew/24App/pageindicatorlibrary/src/debug/shaders"/></dataSet></merger>

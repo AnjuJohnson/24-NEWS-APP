@@ -10,12 +10,14 @@ import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
+import com.ottapp.android.basemodule.view.base.activity.BaseActivity;
 import com.tfApp.android.newstv.R;
 import com.tfApp.android.newstv.presenter.activity.SplashscreenActivityPresenter;
 import com.tfApp.android.newstv.presenter.activity.iview.SplashActivityIView;
-import com.ottapp.android.basemodule.view.base.activity.BaseActivity;
+import io.fabric.sdk.android.Fabric;
+
 
 /**
  * Created by George PJ on 21-02-2018.
@@ -29,6 +31,8 @@ public class SplashActivity extends BaseActivity<SplashscreenActivityPresenter<S
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
+     //   Fabric.with(this, new Crashlytics());
         int notifyId = getIntent().getIntExtra("N_ID", 0);
         if (notifyId > 0) {
             NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);

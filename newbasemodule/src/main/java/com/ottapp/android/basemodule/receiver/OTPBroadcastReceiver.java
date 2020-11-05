@@ -16,7 +16,9 @@ public class OTPBroadcastReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Bundle bundle = intent.getExtras();
         SmsMessage[] smsm = null;
-        StringBuilder sms_str = new StringBuilder();StringBuilder header = new StringBuilder();
+        StringBuilder sms_str = new StringBuilder();
+        StringBuilder header = new StringBuilder();
+
         if (bundle != null) {
             // Get the SMS message
             Object[] pdus = (Object[]) bundle.get("pdus");

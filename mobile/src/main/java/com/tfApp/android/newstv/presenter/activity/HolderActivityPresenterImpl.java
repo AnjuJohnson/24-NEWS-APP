@@ -7,12 +7,16 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 
+import com.ottapp.android.basemodule.models.MenuDataModel;
+import com.ottapp.android.basemodule.repository.responses.BottomBarVisibilityEvent;
+import com.ottapp.android.basemodule.services.MenuServices;
+import com.ottapp.android.basemodule.utils.ScreenSwitchEvent;
+import com.ottapp.android.basemodule.view.base.fragment.BaseFragment;
 import com.tfApp.android.newstv.R;
 import com.tfApp.android.newstv.adaptors.BottomNavigationAdapter;
 import com.tfApp.android.newstv.models.PopupMenuItem;
 import com.tfApp.android.newstv.presenter.activity.iview.HolderActivityIView;
 import com.tfApp.android.newstv.view.activity.HolderActivity;
-import com.tfApp.android.newstv.view.activity.MenuLeftActivity;
 import com.tfApp.android.newstv.view.activity.PollWebActivity;
 import com.tfApp.android.newstv.view.activity.SearchActivityScreen;
 import com.tfApp.android.newstv.view.fragment.FavouriteVideoGridFragment;
@@ -20,23 +24,10 @@ import com.tfApp.android.newstv.view.fragment.GenreFragment;
 import com.tfApp.android.newstv.view.fragment.HomeFragment;
 import com.tfApp.android.newstv.view.fragment.HtmlViewFragment;
 import com.tfApp.android.newstv.view.fragment.InfoFragment;
-import com.tfApp.android.newstv.view.fragment.LanguageFragment;
 import com.tfApp.android.newstv.view.fragment.LanguageFragmentIn;
 import com.tfApp.android.newstv.view.fragment.PackageFragment;
-import com.tfApp.android.newstv.view.fragment.SearchVideoGridFragment;
 import com.tfApp.android.newstv.view.fragment.ToolbarFragment;
-import com.tfApp.android.newstv.view.fragment.VideoDetailsFragment;
 import com.tfApp.android.newstv.view.fragment.YoutubeVideoGridVideoGridFragment;
-import com.google.gson.Gson;
-import com.ottapp.android.basemodule.models.AssetDetaillsDataModel;
-import com.ottapp.android.basemodule.models.AssetsDetailsResponseEvent;
-import com.ottapp.android.basemodule.models.GenreModel;
-import com.ottapp.android.basemodule.models.MenuDataModel;
-import com.ottapp.android.basemodule.repository.responses.BottomBarVisibilityEvent;
-import com.ottapp.android.basemodule.services.GenreService;
-import com.ottapp.android.basemodule.services.MenuServices;
-import com.ottapp.android.basemodule.utils.ScreenSwitchEvent;
-import com.ottapp.android.basemodule.view.base.fragment.BaseFragment;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -73,21 +64,12 @@ public class HolderActivityPresenterImpl<I extends HolderActivityIView> extends 
         if (!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
-       // scrennHistory.add(new HomeFragment());
     }
 
 
     @Subscribe(threadMode = ThreadMode.MAIN_ORDERED)
     public void screenChangeEvent(ScreenSwitchEvent screenSwitchEvent) {
-//        if (getIView().getViewPager() != null) {
-//            getIView().getViewPager().setCurrentItem(screenSwitchEvent.getId());
-//            if (adapter.getCurrentFragment() instanceof HomeFragment ||adapter.getCurrentFragment() instanceof HomeFragment)
-//                hideAll();
-//            else
-//                showAll();
-//        } else {
-//
-    //    }
+
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN_ORDERED)
@@ -105,7 +87,7 @@ public class HolderActivityPresenterImpl<I extends HolderActivityIView> extends 
     public void onItemSelected(int position) {
             if (getIView().getActivity().getIntent() != null) {
                 if (position == POS_MORE_SCREE) {
-                    fragmentBase = new HomeFragment();
+                   /* fragmentBase = new HomeFragment();
                     Bundle bundle = new Bundle();
 
                     bundle.putString(YoutubeVideoGridVideoGridFragment.TITLE_TEXT, "Home");
@@ -113,7 +95,7 @@ public class HolderActivityPresenterImpl<I extends HolderActivityIView> extends 
                             YoutubeVideoGridVideoGridFragment.LOADER_TYPE_MENU);
                     fragmentBase.setArguments(bundle);
                     if (fragmentBase != null)
-                        showFragment(fragmentBase);
+                        showFragment(fragmentBase);*/
                     setupMenu();
                     return;
                 } else {
@@ -161,12 +143,12 @@ public class HolderActivityPresenterImpl<I extends HolderActivityIView> extends 
             menuItemList.add(popupMenuItem);
         }
 
-
         navigationAdapter = new BottomNavigationAdapter(getIView().getContext(), menuItemList, 5);
         getIView().getBottomMenu().setAdapter(navigationAdapter);
         navigationAdapter.setOnOptionSelectedListener(this);
 
         int position = getMenuPositionByAction(homeAction);
+
 
         navigationAdapter.setCurrentSelection(position);
         hideAll();
@@ -269,6 +251,7 @@ public class HolderActivityPresenterImpl<I extends HolderActivityIView> extends 
     }
     public boolean onBackPressed() {
         String title = ((HolderActivity) getIView().getActivity()).getTitleTop();
+        System.out.println("title:"+title);
         if(title.equals("Home".trim())){
             askExitDialog();
         }
@@ -276,7 +259,8 @@ public class HolderActivityPresenterImpl<I extends HolderActivityIView> extends 
             int position = getMenuPositionByAction(homeAction);
             PopupMenuItem popupMenuItem = menuItemList.get(position);
             navigationAdapter.setCurrentSelection(position);
-            onOptionSelected(popupMenuItem,position);
+            //changed
+      //     onOptionSelected(popupMenuItem,position);
         }
 
         return true;

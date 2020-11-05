@@ -61,9 +61,7 @@ public abstract class AssetDataDao implements BaseDao<AssetVideosDataModel> {
     @Query("SELECT * FROM AssetVideosDataModel WHERE id=:id and active=1")
     public abstract AssetVideosDataModel getById(int id);
 
-    @Query("DELETE FROM AssetVideosDataModel WHERE id NOT IN (SELECT id FROM AssetVideosDataModel ORDER BY modifiedDate DESC LIMIT 100)")
+    @Query("DELETE FROM AssetVideosDataModel WHERE id NOT IN (SELECT id FROM AssetVideosDataModel ORDER BY modifiedDate DESC LIMIT 10)")
     public abstract void deleteLimitById();
 
-//    @Query("SELECT max() FROM AssetVideosDataModel where active=1")
-//    public abstract long getLastUpdatedTimestamp();
 }

@@ -5,12 +5,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.TextView;
 
-import com.tfApp.android.newstv.R;
 import com.ottapp.android.basemodule.models.GenreModel;
-import com.ottapp.android.basemodule.models.LanguageModel;
+import com.tfApp.android.newstv.R;
 
 import java.util.List;
 
@@ -43,19 +41,6 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
 
             holder.nameTextView.setText(title);
 
-          /*  } else {
-                if (media.getFavourite() == 1) {
-                    holder.iv_favourite.setBackgroundResource(R.drawable.ic_favorite_active);
-                } else {
-                    holder.iv_favourite.setBackgroundResource(R.drawable.ic_favorite_inactive);
-                }
-            }*/
-
-
-            if (position == getItemCount() - 1 ) {
-               // if (onItemSelectionListener != null)
-                  //  onItemSelectionListener.onMoreItemsNeeded();
-            }
         }
 
     }
@@ -94,12 +79,10 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
             if (position > -1 && detailsModel != null && detailsModel.size() > position) {
                 if (v == nameTextView) {
                     if (onItemSelectionListener != null) {
-                       // detailsModel.get(position).setSeleted(1);
                         onItemSelectionListener.onItemSelect(detailsModel,position);
                     }
                 }else {
                     if (onItemSelectionListener != null)
-                        //detailsModel.get(position).setSeleted(1);
                         onItemSelectionListener.onItemSelect(detailsModel,position);
                 }
             }

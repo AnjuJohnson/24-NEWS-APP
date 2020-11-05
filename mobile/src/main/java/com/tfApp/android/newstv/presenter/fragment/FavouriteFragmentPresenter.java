@@ -5,13 +5,6 @@ import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 
-import com.tfApp.android.newstv.R;
-import com.tfApp.android.newstv.adaptors.AutoFitGridLayoutManager;
-import com.tfApp.android.newstv.adaptors.OnYoutubeItemSelectionListener;
-import com.tfApp.android.newstv.adaptors.PlayedDurationListener;
-import com.tfApp.android.newstv.adaptors.YoutubeItemAdapter;
-import com.tfApp.android.newstv.presenter.fragment.iview.FavouriteFragmentIView;
-import com.tfApp.android.newstv.utils.StaticValues;
 import com.ottapp.android.basemodule.models.AssetDetaillsDataModel;
 import com.ottapp.android.basemodule.models.AssetVideosDataModel;
 import com.ottapp.android.basemodule.models.AssetsDetailsResponseEvent;
@@ -23,6 +16,13 @@ import com.ottapp.android.basemodule.services.UserFavouriteServices;
 import com.ottapp.android.basemodule.utils.DecodeUrl;
 import com.ottapp.android.basemodule.utils.ValidatorUrl;
 import com.ottapp.android.basemodule.utils.preference.PreferenceManager;
+import com.tfApp.android.newstv.R;
+import com.tfApp.android.newstv.adaptors.AutoFitGridLayoutManager;
+import com.tfApp.android.newstv.adaptors.OnYoutubeItemSelectionListener;
+import com.tfApp.android.newstv.adaptors.PlayedDurationListener;
+import com.tfApp.android.newstv.adaptors.YoutubeItemAdapter;
+import com.tfApp.android.newstv.presenter.fragment.iview.FavouriteFragmentIView;
+import com.tfApp.android.newstv.utils.StaticValues;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -31,7 +31,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FavouriteFragmentPresenter<I extends FavouriteFragmentIView> extends BaseFragmentPresenter<I> implements OnYoutubeItemSelectionListener, SwipeRefreshLayout.OnRefreshListener,PlayedDurationListener {
+public class FavouriteFragmentPresenter<I extends FavouriteFragmentIView> extends BaseFragmentPresenter<I> implements OnYoutubeItemSelectionListener, SwipeRefreshLayout.OnRefreshListener, PlayedDurationListener {
 
     private List<AssetVideosDataModel> data = new ArrayList<>();
     private YoutubeItemAdapter youtubeItemAdapter;

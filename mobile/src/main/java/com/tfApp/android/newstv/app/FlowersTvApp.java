@@ -14,16 +14,18 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Base64;
 import android.util.Log;
 
-import com.tfApp.android.newstv.R;
-import com.tfApp.android.newstv.utils.StaticValues;
-import com.tfApp.android.newstv.view.activity.SplashActivity;
-import com.ott.android.flowerstv.FirebaseMessageService;
-import com.ott.android.flowerstv.app.BaseCouplingApplication;
-import com.ott.android.flowerstv.model.FcmNotificationModel;
+import com.crashlytics.android.Crashlytics;
+import com.crashlytics.android.ndk.CrashlyticsNdk;
+import com.ott.android.newstv.FirebaseMessageService;
+import com.ott.android.newstv.app.BaseCouplingApplication;
+import com.ott.android.newstv.model.FcmNotificationModel;
 import com.ottapp.android.basemodule.apis.RetrofitEngine;
 import com.ottapp.android.basemodule.receiver.UpdateRequestReceiver;
 import com.ottapp.android.basemodule.repository.RepoRequestEvent;
 import com.ottapp.android.basemodule.repository.RepoRequestType;
+import com.tfApp.android.newstv.R;
+import com.tfApp.android.newstv.utils.StaticValues;
+import com.tfApp.android.newstv.view.activity.SplashActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -33,6 +35,8 @@ import java.security.Key;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
+
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by George PJ on 21-02-2018.
@@ -45,11 +49,12 @@ public class FlowersTvApp extends BaseCouplingApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics(), new CrashlyticsNdk());
         if (!EventBus.getDefault().isRegistered(this))
             EventBus.getDefault().register(this);
         //String API_BASE_URL = DXDecryptorcOqy3J7P.decode("7QaEzUVInQ3p4cR4f4tEXS4b0oBSGCqNnPJrEgUXF9qnpuA9ZHmk")/*"http://202.65.132.179:8080/flowerstvws/"*/;
        // String API_BASE_URL ="http://192.168.1.7:5000/flowersTvws/v1/";//http://202.65.132.179:8080/flowerstvws/"*/;
-        String API_BASE_URL = "http://52.66.240.97:3000/flowersTvws/v1/";//http://202.65.132.179:8080/flowerstvws/"*/;
+        String API_BASE_URL = "http://ws.twentyfournews.com/flowersTvws/v1/";//http://202.65.132.179:8080/flowerstvws/"*/;
 
         RetrofitEngine.init(API_BASE_URL);
         StaticValues.last_cache = System.currentTimeMillis();
@@ -62,7 +67,7 @@ public class FlowersTvApp extends BaseCouplingApplication {
 
     @Override
     public int getAppVersion() {
-        return 4;
+        return 1;
     }
 
     @Subscribe(threadMode = ThreadMode.BACKGROUND)
@@ -97,15 +102,15 @@ public class FlowersTvApp extends BaseCouplingApplication {
 
             String content = remoteMessage.getBody();
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplication(), CHANNEL_ID)
-                    .setSmallIcon(R.drawable.ic_notification);
+                    .setSmallIcon(R.drawable.whitelogo_24);
             Bitmap icon = BitmapFactory.decodeResource(getApplication().getResources(),
                     R.drawable.rsz_24logo);
             mBuilder.setLargeIcon(icon);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                mBuilder.setSmallIcon(R.drawable.ic_notification);
+                mBuilder.setSmallIcon(R.drawable.whitelogo_24);
                 mBuilder.setColor(getResources().getColor(R.color.primary));
             } else {
-                mBuilder.setSmallIcon(R.drawable.ic_notification);
+                mBuilder.setSmallIcon(R.drawable.whitelogo_24);
             }
             mBuilder.setContentTitle(remoteMessage.getTitle());
             Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);

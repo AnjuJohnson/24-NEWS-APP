@@ -10,11 +10,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.tfApp.android.newstv.R;
-import com.google.gson.Gson;
 import com.ottapp.android.basemodule.app.GlideApp;
-import com.ottapp.android.basemodule.models.AssetVideosDataModel;
 import com.ottapp.android.basemodule.models.PackageModel;
+import com.tfApp.android.newstv.R;
 
 import java.util.List;
 
@@ -45,13 +43,6 @@ public class PackageAdapter extends RecyclerView.Adapter<PackageAdapter.ViewHold
             holder.nameTextView.setText(title);
             holder.priceTexView.setText(String.valueOf("$ "+media.getPrice()+ " /Month"));
 
-          /*  } else {
-                if (media.getFavourite() == 1) {
-                    holder.iv_favourite.setBackgroundResource(R.drawable.ic_favorite_active);
-                } else {
-                    holder.iv_favourite.setBackgroundResource(R.drawable.ic_favorite_inactive);
-                }
-            }*/
             if (position == getItemCount() - 1) {
                 if (onItemSelectionListener != null)
                     onItemSelectionListener.onMoreItemsNeeded();
@@ -97,8 +88,6 @@ public class PackageAdapter extends RecyclerView.Adapter<PackageAdapter.ViewHold
                     if (onItemSelectionListener != null)
                     onItemSelectionListener.onItemSelect(detailsModel.get(position));
                 }
-                    //if (onItemSelectionListener != null)
-                        //onItemSelectionListener.onItemSelect(detailsModel.get(position));
                 }
             }
         }

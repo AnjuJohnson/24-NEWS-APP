@@ -9,10 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.tfApp.android.newstv.R;
-import com.google.gson.Gson;
 import com.ottapp.android.basemodule.app.GlideApp;
 import com.ottapp.android.basemodule.models.AssetVideosDataModel;
+import com.tfApp.android.newstv.R;
 
 import java.util.List;
 
@@ -133,8 +132,7 @@ public class HorizontalRecyclerAdapter extends RecyclerView.Adapter<RecyclerView
     }
 
     private void loadMore() {
-//        if (playListModel!=null&&playListModel.getNextPageToken() != null)
-//            new GetPlayListVideosAsyncTask(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, playListModel);
+
     }
 
     @Override

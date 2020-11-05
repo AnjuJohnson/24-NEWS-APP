@@ -6,30 +6,11 @@ import android.bitryt.com.youtubedataapi.activity.MediaStreamingLandActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 
-import com.tfApp.android.newstv.R;
-import com.tfApp.android.newstv.adaptors.AutoFitGridLayoutManager;
-import com.tfApp.android.newstv.adaptors.OnYoutubeItemSelectionListener;
-import com.tfApp.android.newstv.adaptors.PlayedDurationListener;
-import com.tfApp.android.newstv.adaptors.VerticalRecyclerAdapter;
-import com.tfApp.android.newstv.adaptors.YoutubeItemAdapter;
-import com.tfApp.android.newstv.adaptors.YoutubeSnap;
-import com.tfApp.android.newstv.presenter.fragment.iview.YoutubeVideoGridFragmentIView;
-import com.tfApp.android.newstv.utils.ProgressDialog;
-import com.tfApp.android.newstv.utils.StaticValues;
-import com.tfApp.android.newstv.view.activity.HolderActivity;
-import com.tfApp.android.newstv.view.activity.MenuLeftActivity;
-import com.tfApp.android.newstv.view.fragment.GenreFragment;
-import com.tfApp.android.newstv.view.fragment.VideoDetailsFragment;
-import com.tfApp.android.newstv.view.fragment.YoutubeVideoGridVideoGridFragment;
-import com.google.gson.Gson;
-import com.kaopiz.kprogresshud.KProgressHUD;
 import com.ottapp.android.basemodule.models.AssetDetaillsDataModel;
 import com.ottapp.android.basemodule.models.AssetVideosDataModel;
 import com.ottapp.android.basemodule.models.AssetsDetailsResponseEvent;
@@ -52,18 +33,32 @@ import com.ottapp.android.basemodule.utils.DecodeUrl;
 import com.ottapp.android.basemodule.utils.ValidatorUrl;
 import com.ottapp.android.basemodule.utils.preference.PreferenceManager;
 
+import com.tfApp.android.newstv.R;
+import com.tfApp.android.newstv.adaptors.AutoFitGridLayoutManager;
+import com.tfApp.android.newstv.adaptors.OnYoutubeItemSelectionListener;
+import com.tfApp.android.newstv.adaptors.PlayedDurationListener;
+import com.tfApp.android.newstv.adaptors.VerticalRecyclerAdapter;
+import com.tfApp.android.newstv.adaptors.YoutubeItemAdapter;
+import com.tfApp.android.newstv.adaptors.YoutubeSnap;
+import com.tfApp.android.newstv.presenter.fragment.iview.YoutubeVideoGridFragmentIView;
+import com.tfApp.android.newstv.utils.StaticValues;
+import com.tfApp.android.newstv.view.activity.HolderActivity;
+import com.tfApp.android.newstv.view.activity.MenuLeftActivity;
+import com.tfApp.android.newstv.view.fragment.GenreFragment;
+import com.tfApp.android.newstv.view.fragment.VideoDetailsFragment;
+import com.tfApp.android.newstv.view.fragment.YoutubeVideoGridVideoGridFragment;
+
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.tfApp.android.newstv.view.fragment.YoutubeVideoGridVideoGridFragment.KEY_LOADER_TYPE;
 import static com.tfApp.android.newstv.view.fragment.YoutubeVideoGridVideoGridFragment.LOAD_DATA;
-import static com.tfApp.android.newstv.view.fragment.YoutubeVideoGridVideoGridFragment.LOAD_LIST;
 import static com.tfApp.android.newstv.view.fragment.YoutubeVideoGridVideoGridFragment.TITLE_TEXT;
+
 
 public class YoutubeVideoGridFragmentPresenter<I extends YoutubeVideoGridFragmentIView> extends BaseFragmentPresenter<I> implements OnYoutubeItemSelectionListener, PlayedDurationListener {
 
@@ -75,6 +70,8 @@ public class YoutubeVideoGridFragmentPresenter<I extends YoutubeVideoGridFragmen
     private boolean loadMore = false;
     private String loadFor;
     private List<AssetVideosDataModel> favouriteList = new ArrayList<>();
+    private int flag=0;
+
     public YoutubeVideoGridFragmentPresenter(I iView) {
         super(iView);
 
@@ -115,7 +112,7 @@ public class YoutubeVideoGridFragmentPresenter<I extends YoutubeVideoGridFragmen
         AssetsViewDataModel viewDataModel = ViewModelProviders.of((FragmentActivity) getIView().getActivityObj()).get(AssetsViewDataModel.class);
 //        // Update the cached copy of the words in the adapter.
         viewDataModel.getAllMenus(categoryId).observe(((FragmentActivity) getIView().getActivityObj()), this::setLiveData);
-     //   dataModels = AssetMenuService.getServices().getAssetsUnderCategory(categoryId);
+   //    dataModels = AssetMenuService.getServices().getAssetsUnderCategory(categoryId);
         youtubeItemAdapter = new YoutubeItemAdapter(dataModels, this, loadMore);
         getIView().getRecyclerView().setAdapter(youtubeItemAdapter);
         getIView().getRecyclerView().setLayoutManager(new AutoFitGridLayoutManager(getIView().getActivityObj(), getIView().getActivityObj().getResources().getDimensionPixelSize(R.dimen._140sdp)));
@@ -130,7 +127,7 @@ public class YoutubeVideoGridFragmentPresenter<I extends YoutubeVideoGridFragmen
     public void showGenreFragment(){
         GenreFragment genreFragment = new GenreFragment();
         Bundle bundle = new Bundle();
-        bundle.putSerializable(YoutubeVideoGridVideoGridFragment.KEY_LOADER_TYPE,
+        bundle.putSerializable(KEY_LOADER_TYPE,
                 YoutubeVideoGridVideoGridFragment.LOADER_TYPE_MENU);
         genreFragment.setArguments(bundle);
         showFragment(genreFragment);
@@ -245,6 +242,12 @@ public class YoutubeVideoGridFragmentPresenter<I extends YoutubeVideoGridFragmen
             if(list!=null || !list.isEmpty())
                 youtubeItemAdapter.setLiveAssetsData(dataModels);
                 maxLimit = moreEvent.getMaxLimit();
+            System.out.println("listsize  "+list.size());
+
+            if(list.size()<10){
+                flag=1;
+            }
+
                 getIView().getRecyclerView().post(new Runnable()
                 {
                     @Override
@@ -391,8 +394,12 @@ public class YoutubeVideoGridFragmentPresenter<I extends YoutubeVideoGridFragmen
 
     @Override
     public void onMoreItemsNeeded() {
-        MoreItemRequestServiceModel requestServiceModel = new MoreItemRequestServiceModel(dataId, maxLimit);
-        getMoreItemsOnScroll(requestServiceModel);
+
+        if(flag==0){
+            MoreItemRequestServiceModel requestServiceModel = new MoreItemRequestServiceModel(dataId, maxLimit);
+            getMoreItemsOnScroll(requestServiceModel);
+        }
+
     }
 
     @Override

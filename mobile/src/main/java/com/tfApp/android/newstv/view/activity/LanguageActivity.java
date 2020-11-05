@@ -1,40 +1,15 @@
 package com.tfApp.android.newstv.view.activity;
 
-import android.Manifest;
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.pm.PackageManager;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.EditText;
-import android.widget.Toast;
 
-
-import com.balysv.materialripple.MaterialRippleLayout;
 import com.tfApp.android.newstv.R;
-import com.tfApp.android.newstv.presenter.activity.LoginActivityPresenter;
-import com.tfApp.android.newstv.presenter.activity.iview.LoginActivityIView;
-import com.tfApp.android.newstv.utils.StaticValues;
 import com.tfApp.android.newstv.view.fragment.LanguageFragment;
-import com.kaopiz.kprogresshud.KProgressHUD;
-import com.ottapp.android.basemodule.events.OTPReceivedEvent;
-import com.ottapp.android.basemodule.receiver.OTPBroadcastReceiver;
-import com.ottapp.android.basemodule.view.base.activity.BaseActivity;
-
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 
 /**
@@ -108,14 +83,11 @@ public class LanguageActivity extends AppCompatActivity {
             dialog = builder.create();
             dialog.dismiss();
         });
-        //   builder.setNegativeButton("Cancel", (dialog, which) -> adapter.setSelected(prev_pos));
-
 
         try {
             dialog.show();
         } catch (Exception ignored) {
             //bad window token happened
-//                getIView().finish();
             dialog = builder.create();
             dialog.dismiss();
         }

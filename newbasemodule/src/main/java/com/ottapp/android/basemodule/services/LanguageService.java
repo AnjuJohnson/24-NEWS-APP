@@ -136,40 +136,4 @@ public class LanguageService extends BaseService<LanguageModel> {
         }
         return services;
     }
-
-
-
-    public void checkUpdate(int version,boolean needReturnEvent) {
-        Call<ResultObject<VersionModel>> qrDataCall = RetrofitEngine.getRetrofitEngine().getApiRequests(RequestApi.class).getVersionUpdateInfo(version);
-        qrDataCall.enqueue(new Callback<ResultObject<VersionModel>>() {
-            @Override
-            public void onResponse(@NonNull Call<ResultObject<VersionModel>> call, @NonNull Response<ResultObject<VersionModel>> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    ResultObject data = response.body();
-                    if (data != null && data.isRequestStatus()) {
-
-                        if (needReturnEvent) {
-                            EventBus.getDefault().post(new VersionResponse(null, data.isRequestStatus()));
-                        }
-                    } else {
-                        if (!data.isRequestStatus()&&data.getMessage().equals("No data found")&&needReturnEvent) {
-                            EventBus.getDefault().post(new VersionResponse(null, false,false));
-                        }
-                    }
-                } else {
-                    if (needReturnEvent) {
-                        EventBus.getDefault().post(new VersionResponse(null, false,true));
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<ResultObject<VersionModel>> call, @NonNull Throwable t) {
-                Log.e("Error", t.getLocalizedMessage());
-                if (needReturnEvent) {
-                    EventBus.getDefault().post(new VersionResponse(null, false,true));
-                }
-            }
-        });
-    }
 }

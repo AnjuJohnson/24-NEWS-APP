@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,14 +14,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.ottapp.android.basemodule.models.GenreViewModel;
+import com.ottapp.android.basemodule.view.base.fragment.BaseFragment;
 import com.tfApp.android.newstv.R;
 import com.tfApp.android.newstv.presenter.fragment.GenrePresenter;
 import com.tfApp.android.newstv.presenter.fragment.iview.GenreFragmentIView;
 import com.tfApp.android.newstv.view.activity.HolderActivity;
-import com.ottapp.android.basemodule.models.GenreViewModel;
-import com.ottapp.android.basemodule.view.base.fragment.BaseFragment;
 
-public class GenreFragment extends BaseFragment<GenrePresenter<GenreFragmentIView>,GenreFragmentIView> implements GenreFragmentIView {
+public class GenreFragment extends BaseFragment<GenrePresenter<GenreFragmentIView>, GenreFragmentIView> implements GenreFragmentIView {
    private  View view;
     @Nullable
     @Override

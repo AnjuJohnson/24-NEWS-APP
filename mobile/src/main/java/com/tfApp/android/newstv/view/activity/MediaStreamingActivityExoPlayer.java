@@ -8,15 +8,15 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.ottapp.android.basemodule.models.AssetVideosDataModel;
+import com.ottapp.android.basemodule.models.UserProfileModel;
+import com.ottapp.android.basemodule.presenters.activity.BaseActivityPresenter;
+import com.ottapp.android.basemodule.view.base.activity.BaseActivity;
 import com.tfApp.android.apis.bitrytplayerapi.manager.PlayerManager;
 import com.tfApp.android.apis.bitrytplayerapi.manager.PlayerManagerCallbacksListener;
 import com.tfApp.android.apis.bitrytplayerapi.ui.BitRytPlayerView;
 import com.tfApp.android.newstv.R;
 import com.tfApp.android.newstv.adaptors.OnItemSelectionListener;
-import com.ottapp.android.basemodule.models.AssetVideosDataModel;
-import com.ottapp.android.basemodule.models.UserProfileModel;
-import com.ottapp.android.basemodule.presenters.activity.BaseActivityPresenter;
-import com.ottapp.android.basemodule.view.base.activity.BaseActivity;
 
 public class MediaStreamingActivityExoPlayer extends BaseActivity implements OnItemSelectionListener<AssetVideosDataModel>,PlayerManagerCallbacksListener {
     public static final int RC_SWITCH_MEDIA = 12345;
@@ -40,21 +40,6 @@ public class MediaStreamingActivityExoPlayer extends BaseActivity implements OnI
         this.userProfileModel = (UserProfileModel) getIntent().getSerializableExtra(DATA_USER);
         player = new PlayerManager(this, this,getString(R.string.app_name),mediaModel);
     }
-
-/*
-    private void setupAdapter() {
-        mRecyclerView = findViewById(R.id.recyclerView);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setHasFixedSize(true);
-        SnapAdapter snapAdapter = new SnapAdapter<>(this);
-        if (mediaModel.getMediaType() == MediaType.VIDEO)
-            snapAdapter.addSnap(new Snap<>(Gravity.START, "Related Videos", DataStore_Mobile.getInstance().getMovieList()));
-        else
-            snapAdapter.addSnap(new Snap<>(Gravity.START, "Related Channels", DataStore_Mobile.getInstance().getChannels()));
-        mRecyclerView.setAdapter(snapAdapter);
-    }
-*/
-
 
     @Override
     public void onBackPressed() {

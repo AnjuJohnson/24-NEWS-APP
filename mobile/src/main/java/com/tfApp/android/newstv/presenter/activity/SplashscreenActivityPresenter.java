@@ -2,9 +2,6 @@ package com.tfApp.android.newstv.presenter.activity;
 
 import android.bitryt.com.youtubedataapi.background.OnLoadingCompletedListener;
 
-import com.tfApp.android.newstv.presenter.activity.iview.SplashActivityIView;
-import com.tfApp.android.newstv.utils.StaticValues;
-import com.ottapp.android.basemodule.app.AppDatabase;
 import com.ottapp.android.basemodule.models.AssetVideosDataModel;
 import com.ottapp.android.basemodule.models.UserDetailsModel;
 import com.ottapp.android.basemodule.models.UserProfileModel;
@@ -20,9 +17,9 @@ import com.ottapp.android.basemodule.services.AssetMenuService;
 import com.ottapp.android.basemodule.services.CategoryAssociationsService;
 import com.ottapp.android.basemodule.services.CategoryService;
 import com.ottapp.android.basemodule.services.MenuServices;
-import com.ottapp.android.basemodule.services.UserProfileService;
-import com.ottapp.android.basemodule.utils.Constants;
 import com.ottapp.android.basemodule.utils.preference.PreferenceManager;
+import com.tfApp.android.newstv.presenter.activity.iview.SplashActivityIView;
+import com.tfApp.android.newstv.utils.StaticValues;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -77,11 +74,6 @@ public class SplashscreenActivityPresenter<I extends SplashActivityIView> extend
         RepoRequestEvent repoRequestEvent = new RepoRequestEvent<>(RepoRequestType.REQUEST_TYPE_VERSION_CHECK,null);
         EventBus.getDefault().post(repoRequestEvent);
 
-//        if(!PreferenceManager.getManager().getDbStatus()) {
-//            boolean b = getIView().getContext().deleteDatabase(AppDatabase.DB_NAME);
-//            PreferenceManager.getManager().setDbStatus(true);
-//            System.out.println("statusDb"+ b);
-//        }
 
     }
     @Subscribe(threadMode = ThreadMode.BACKGROUND)
@@ -89,6 +81,7 @@ public class SplashscreenActivityPresenter<I extends SplashActivityIView> extend
         if(versionEvent.isError()){
             if (getIView()!=null){
                 getIView().showRetryDialog();
+
             }
             return;
         }

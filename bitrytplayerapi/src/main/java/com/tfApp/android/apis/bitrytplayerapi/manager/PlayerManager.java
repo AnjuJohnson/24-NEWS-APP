@@ -33,7 +33,6 @@
 package com.tfApp.android.apis.bitrytplayerapi.manager;
 
 import android.content.Context;
-import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -83,8 +82,6 @@ import com.ottapp.android.basemodule.models.AssetVideosDataModel;
 import com.ottapp.android.basemodule.models.BaseMediaModel;
 
 import java.io.IOException;
-
-import okhttp3.MediaType;
 
 import static android.content.ContentValues.TAG;
 

@@ -4,11 +4,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
-import com.tfApp.android.newstv.adaptors.GenreAdapter;
-import com.tfApp.android.newstv.adaptors.OnGentreSelectionListener;
-import com.tfApp.android.newstv.presenter.fragment.iview.GenreFragmentIView;
-import com.tfApp.android.newstv.view.activity.HolderActivity;
-import com.google.gson.Gson;
 import com.ottapp.android.basemodule.models.GenreModel;
 import com.ottapp.android.basemodule.presenters.fragment.BaseFragmentPresenter;
 import com.ottapp.android.basemodule.repository.RepoRequestEvent;
@@ -17,6 +12,10 @@ import com.ottapp.android.basemodule.repository.responses.GenreResponseEvent;
 import com.ottapp.android.basemodule.services.AssetMenuService;
 import com.ottapp.android.basemodule.services.GenreService;
 import com.ottapp.android.basemodule.services.LanguageService;
+import com.tfApp.android.newstv.adaptors.GenreAdapter;
+import com.tfApp.android.newstv.adaptors.OnGentreSelectionListener;
+import com.tfApp.android.newstv.presenter.fragment.iview.GenreFragmentIView;
+import com.tfApp.android.newstv.view.activity.HolderActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;

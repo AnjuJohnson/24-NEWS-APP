@@ -22,12 +22,12 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ottapp.android.basemodule.models.FlowersViewModel;
+import com.ottapp.android.basemodule.view.base.activity.BaseActivity;
 import com.tfApp.android.newstv.R;
 import com.tfApp.android.newstv.presenter.activity.LeftMenuActivityPresenter;
 import com.tfApp.android.newstv.presenter.activity.iview.LeftMenuActivityIView;
 import com.tfApp.android.newstv.utils.StaticValues;
-import com.ottapp.android.basemodule.models.FlowersViewModel;
-import com.ottapp.android.basemodule.view.base.activity.BaseActivity;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
@@ -160,17 +160,7 @@ public class MenuLeftActivity extends BaseActivity<LeftMenuActivityPresenter<Lef
         super.onResume();
         if (slidingRootNav != null && slidingRootNav.isMenuOpened())
             slidingRootNav.closeMenu(false);
-//        if (DataStore.getInstance().getDynamicPlayListModel() == null ||
-//                DataStore.getInstance().getDynamicPlayListModel().getMenuArray() == null ||
-//                DataStore.getInstance().getDynamicPlayListModel().getMenuArray().isEmpty()) {
-//            startActivity(new Intent(MenuLeftActivity.this, SplashActivity.class));
-//        if ( DataStore.getInstance().getDynamicMenuList() == null ){
-////                DataStore.getInstance().getCategoryList().isEmpty()||
-////                DataStore.getInstance().getCategoryAssosiationList().isEmpty()||
-////                DataStore.getInstance().getCategoryAssosiationList().isEmpty()) {
-//            startActivity(new Intent(MenuLeftActivity.this, SplashActivity.class));
-     //       finish();
-     //   }
+
     }
 
     @Override

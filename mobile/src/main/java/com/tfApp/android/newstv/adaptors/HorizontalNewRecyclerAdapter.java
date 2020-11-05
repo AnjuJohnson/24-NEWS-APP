@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.tfApp.android.newstv.R;
 import com.ottapp.android.basemodule.app.GlideApp;
 import com.ottapp.android.basemodule.models.AssetVideosDataModel;
+import com.tfApp.android.newstv.R;
 
 import java.util.List;
 
@@ -83,7 +83,7 @@ public class HorizontalNewRecyclerAdapter extends RecyclerView.Adapter<RecyclerV
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull final ViewGroup viewGroup, int viewType) {
-        View v1 = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.adapter_new_row, viewGroup, false);
+        View v1 = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.adapter, viewGroup, false);
         return new CellViewHolder(v1);
     }
 
@@ -130,8 +130,7 @@ public class HorizontalNewRecyclerAdapter extends RecyclerView.Adapter<RecyclerV
     }
 
     private void loadMore() {
-//        if (playListModel!=null&&playListModel.getNextPageToken() != null)
-//            new GetPlayListVideosAsyncTask(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, playListModel);
+
     }
 
     @Override

@@ -4,8 +4,8 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 
-import com.tfApp.android.newstv.presenter.activity.iview.HolderActivityIView;
 import com.ottapp.android.basemodule.presenters.activity.BaseActivityPresenter;
+import com.tfApp.android.newstv.presenter.activity.iview.HolderActivityIView;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -90,17 +90,13 @@ public class HolderActivityPresenter extends BaseActivityPresenter<HolderActivit
 
 
     protected void showAll() {
-        if (activityIView.getBottomMenuRL().getVisibility() != View.VISIBLE)
-            activityIView.getBottomMenuRL().setVisibility(View.VISIBLE);
-        if (activityIView.getTopBar().getVisibility() != View.VISIBLE)
-            activityIView.getTopBar().setVisibility(View.VISIBLE);
+//        if (activityIView.getBottomMenuRL().getVisibility() != View.VISIBLE)
+//            activityIView.getBottomMenuRL().setVisibility(View.VISIBLE);
+//        if (activityIView.getTopBar().getVisibility() != View.VISIBLE)
+//            activityIView.getTopBar().setVisibility(View.VISIBLE);
     }
 
     protected void hideAll() {
-//        if (activityIView.getBottomMenuRL().getVisibility() != View.GONE)
-//            activityIView.getBottomMenuRL().setVisibility(View.GONE);
-//        if (activityIView.getTopBar().getVisibility() != View.GONE)
-//            activityIView.getTopBar().setVisibility(View.GONE);
     }
 
     public void registerEvents() {

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -264,10 +265,17 @@ public class AssetMenuService extends BaseService<AssetVideosDataModel> {
               idList.add(String.valueOf(model.getId()));
           }
         }
+
         if(!idList.isEmpty()){
+             ids =  TextUtils.join(",", idList);
+        }
+
+System.out.println("languageid_assetmenu"+ids);
+       /* if(!idList.isEmpty()){
           ids = idList.stream()
                   .collect(Collectors.joining(","));;
-        }
+        }*/
+
      return  ids;
     }
 
@@ -282,9 +290,13 @@ public class AssetMenuService extends BaseService<AssetVideosDataModel> {
             }
         }
         if(!idList.isEmpty()){
+            ids =  TextUtils.join(",", idList);
+        }
+
+     /*   if(!idList.isEmpty()){
             ids = idList.stream()
                     .collect(Collectors.joining(","));;
-        }
+        }*/
         return  ids;
     }
 
@@ -332,6 +344,7 @@ public class AssetMenuService extends BaseService<AssetVideosDataModel> {
 
     //service to get the data based on the category id
     public void getSpecificCategory(MoreItemRequestServiceModel data, boolean needReturnEvent) {
+        System.out.println("languageid_1"+"111");
         String langIds = getLanguageIds();
         String genreIds = getGenreIds();
         Call<ResultObject<HomeDataModel>> qrDataCall = RetrofitEngine.getRetrofitEngine().getApiRequests(RequestApi.class).getSpecificCategory(data.getCategoryId(), Constants.ITEM_MORE_LIMIT, data.getMaxLimit(),langIds,genreIds);
@@ -341,8 +354,6 @@ public class AssetMenuService extends BaseService<AssetVideosDataModel> {
                 if (response.isSuccessful() && response.body() != null) {
                     ResultObject<HomeDataModel> responseData = response.body();
                     if (responseData.getData().getAssetList() != null && responseData.isRequestStatus()) {
-                       // insertAll(responseData.getData().getAssetList());
-                        logLargeString(new Gson().toJson(responseData.getData().getAssetList()));
                         if (needReturnEvent) {
                             EventBus.getDefault().post(new AssetsMoreListResponse(responseData.getData().getAssetList(), responseData.isRequestStatus(), responseData.getData().getMaxLimit()));
                         }
@@ -372,10 +383,9 @@ public class AssetMenuService extends BaseService<AssetVideosDataModel> {
 
     public void getAllUpdatedAssetsRelatedToMenuFromServer(boolean needReturnEvent) {
         AssetMenuService.getServices().setRetryRequired(true);
-        long lastUpdatedDate = getLastUpdatedTimestamp();
+        System.out.println("languageid_2"+"222");
         String langIds = getLanguageIds();
         String genreIds = getGenreIds();
-        System.out.println("genreIds:"+genreIds);
         Call<ResultObject<HomeDataModel>> cardCall = RetrofitEngine.getRetrofitEngine()
                 .getApiRequests(RequestApi.class).getMenuVideos(Constants.ITEM_MORE_LIMIT, Constants.ITEM_LIMIT_ASSET,langIds,genreIds);
         cardCall.enqueue(new Callback<ResultObject<HomeDataModel>>() {
@@ -388,7 +398,6 @@ public class AssetMenuService extends BaseService<AssetVideosDataModel> {
 
 
                         insertAll(data.getData().getAssetList());
-                  //      setVideoId(data.getData().getAssetList(), 0);
 
                         if (needReturnEvent) {
                             EventBus.getDefault().post(new AssetsModelResponse(data.getData().getAssetList(), data.isRequestStatus()));
@@ -419,11 +428,10 @@ public class AssetMenuService extends BaseService<AssetVideosDataModel> {
 
 
     public void getAllUpdatedAssetsonRefresh(int categoryId, int assetId, long lastUpdatedDate, boolean needReturnEvent) {
-        // long lastUpdatedDate = getLastUpdatedTimestamp();
+        System.out.println("languageid_3"+"333");
         String langIds = getLanguageIds();
-        System.out.println("languageIds:"+langIds);
+
         Call<ResultObject<AssetVideosDataModel>> cardCall = RetrofitEngine.getRetrofitEngine()
-//                .getApiRequests(RequestApi.class).updateMenuVideos(categoryId, assetId, lastUpdatedDate);
                 .getApiRequests(RequestApi.class).updateMenuVideos(categoryId,lastUpdatedDate,langIds);
         cardCall.enqueue(new Callback<ResultObject<AssetVideosDataModel>>() {
             @Override
@@ -458,12 +466,4 @@ public class AssetMenuService extends BaseService<AssetVideosDataModel> {
         });
     }
 
-    public void logLargeString(String str) {
-        if(str.length() > 3000) {
-            Log.i("TAG", str.substring(0, 3000));
-            logLargeString(str.substring(3000));
-        } else {
-            Log.i("TAG", str); // continuation
-        }
-    }
 }

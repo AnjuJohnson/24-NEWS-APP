@@ -7,35 +7,30 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.ottapp.android.basemodule.models.AssetDetaillsDataModel;
-import com.ottapp.android.basemodule.models.AssetsDetailsResponseEvent;
+import com.ottapp.android.basemodule.models.AssetVideosDataModel;
+import com.ottapp.android.basemodule.models.AssetsViewDataModel;
 import com.ottapp.android.basemodule.models.BannerModel;
+import com.ottapp.android.basemodule.models.CategoryMenuAssociationViewModel;
+import com.ottapp.android.basemodule.models.CategoryViewModel;
+import com.ottapp.android.basemodule.models.UserProfileModel;
 import com.ottapp.android.basemodule.repository.responses.BannerModelResponse;
 import com.ottapp.android.basemodule.services.UserProfileService;
+import com.ottapp.android.basemodule.view.base.fragment.BaseFragment;
 import com.tfApp.android.newstv.R;
 import com.tfApp.android.newstv.presenter.fragment.HomeFragmentPresenter;
 import com.tfApp.android.newstv.presenter.fragment.iview.HomeFragmentIView;
 import com.tfApp.android.newstv.utils.StaticValues;
 import com.tfApp.android.newstv.view.activity.HolderActivity;
 import com.tfApp.android.newstv.view.activity.MediaStreamingActivityExoPlayer;
-import com.ottapp.android.basemodule.models.AssetVideosDataModel;
-import com.ottapp.android.basemodule.models.AssetsViewDataModel;
-import com.ottapp.android.basemodule.models.CategoryMenuAssociationViewModel;
-import com.ottapp.android.basemodule.models.CategoryViewModel;
-import com.ottapp.android.basemodule.models.UserProfileModel;
-import com.ottapp.android.basemodule.services.AssetMenuService;
-import com.ottapp.android.basemodule.view.base.fragment.BaseFragment;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -69,9 +64,9 @@ public class HomeFragment extends BaseFragment<HomeFragmentPresenter<HomeFragmen
         view = inflater.inflate(R.layout.activity_home_header, container, false);
         ((HolderActivity) getActivity()).showLogo("Home");
         bannerSlider = view.findViewById(R.id.banner_slider1);
-        banners = new ArrayList<>();
+    //    banners = new ArrayList<>();
         UserProfileService.getInstance().getAllUpdatedBannersFromServer(true);
-        banner = new ArrayList<>();
+   //     banner = new ArrayList<>();
 //        banner.add("https://s3.ap-south-1.amazonaws.com/24news.bitryt.com/Banners/banner1.jpg");
 //        banner.add("https://s3.ap-south-1.amazonaws.com/24news.bitryt.com/Banners/banner2.jpg");
 //        banner.add("https://s3.ap-south-1.amazonaws.com/24news.bitryt.com/Banners/banner3.jpg");
@@ -116,7 +111,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentPresenter<HomeFragmen
     }
 
     private void startAutoScrolling() {
-
+        Log.i("bannersizeeee", String.valueOf(banner.size()));
         stopAutoScrolling();
         TimerTask task = new TimerTask() {
             @Override
@@ -150,10 +145,12 @@ public class HomeFragment extends BaseFragment<HomeFragmentPresenter<HomeFragmen
 
         }
         if(responseEvent.isSuccess()){
+            banner = new ArrayList<>();
+            banners = new ArrayList<>();
         List<BannerModel>bannersList =responseEvent.getDatas();
             for (int i = 0; i<bannersList.size();i++){
                 // if(banners.size()<3)
-
+System.out.println("bannerrs:"+new Gson().toJson(bannersList));
                 banner.add(bannersList.get(i).getBannerUrl());
             }
 
@@ -161,8 +158,15 @@ public class HomeFragment extends BaseFragment<HomeFragmentPresenter<HomeFragmen
                 // if(banners.size()<3)
                 banners.add(new RemoteBanner(banner.get(i)));
             }
-            bannerSlider.setBanners(banners);
-            startAutoScrolling();
+     try {
+        getActivity().runOnUiThread(() -> {
+        bannerSlider.setBanners(banners);
+        startAutoScrolling();
+    });
+  }catch (ArrayStoreException e){
+         bannerSlider.setBanners(banners);
+         startAutoScrolling();
+}
 //
         }else{
 
@@ -230,6 +234,6 @@ public class HomeFragment extends BaseFragment<HomeFragmentPresenter<HomeFragmen
     @Override
     public void onDestroy() {
         super.onDestroy();
-        getPresenter().destroy();
+        //getPresenter().destroy();
     }
 }

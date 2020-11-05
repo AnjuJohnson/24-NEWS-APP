@@ -17,13 +17,11 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ottapp.android.basemodule.view.base.activity.BaseActivity;
 import com.tfApp.android.newstv.R;
 import com.tfApp.android.newstv.presenter.activity.SearchScreenActivityPresenter;
 import com.tfApp.android.newstv.presenter.activity.iview.SearchScreenActivityIView;
-import com.tfApp.android.newstv.view.fragment.HomeFragment;
 import com.tfApp.android.newstv.view.fragment.SearchVideoGridFragment;
-import com.tfApp.android.newstv.view.fragment.YoutubeVideoGridVideoGridFragment;
-import com.ottapp.android.basemodule.view.base.activity.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -38,14 +36,12 @@ public class SearchActivityScreen extends BaseActivity<SearchScreenActivityPrese
     private SearchVideoGridFragment fragment;
     private Timer timer;
     private TimerTask timerTask;
-    //private SearchScreenActivityPresenter getPresenter();
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_search_screen);
-        //getPresenter()=initializePresenter();
         initialization();
         
         getPresenter().setFragment();
@@ -104,13 +100,8 @@ public class SearchActivityScreen extends BaseActivity<SearchScreenActivityPrese
 
     @Override
     public void onBackPressed() {
-//        Intent intent = getIntent();
-//        Bundle bundle = new Bundle();
-//        Fragment fragmentBase = new HomeFragment();
-//        fragmentBase.setArguments(bundle);
-//        if (fragmentBase != null)
-//            showFragment(fragmentBase);
-        Intent intent = new Intent(this,HolderActivity.class);
+
+        Intent intent = new Intent(this, HolderActivity.class);
         startActivity(intent);
 
     }

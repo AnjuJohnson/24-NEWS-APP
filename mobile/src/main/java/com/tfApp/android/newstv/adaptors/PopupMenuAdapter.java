@@ -12,10 +12,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ottapp.android.basemodule.app.GlideApp;
+
 import com.tfApp.android.newstv.R;
 import com.tfApp.android.newstv.app.FlowersTvApp;
 import com.tfApp.android.newstv.models.PopupMenuItem;
-import com.ottapp.android.basemodule.app.GlideApp;
 
 public class PopupMenuAdapter extends ArrayAdapter<PopupMenuItem> {
 
@@ -50,11 +51,8 @@ public class PopupMenuAdapter extends ArrayAdapter<PopupMenuItem> {
         if (page != null && !page.getTitle().trim().isEmpty()) {
             holder.title.setText(page.getTitle());
         }
-        /*if (page != null && page.getImageUrl() != null) {
-            GlideApp.with(holder.image.getApplication()).load(page.getImageUrl()).placeholder(page.getDrawable()).into(holder.image);
-        } else */if (page != null && page.getDrawable() > 0) {
+       if (page != null && page.getDrawable() > 0) {
             GlideApp.with(holder.image.getContext()).load(page.getImageUrl()).into(holder.image);
-           // holder.image.setImageDrawable(getDrawableFromRes(page.getDrawable()));
         }
         if (page!=null&&!page.isWashOut())
             holder.image.setImageTintList(null);

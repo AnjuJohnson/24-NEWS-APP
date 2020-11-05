@@ -1,16 +1,30 @@
 package com.tfApp.android.newstv.presenter.fragment;
 
-import android.app.Fragment;
 import android.bitryt.com.youtubedataapi.activity.MediaStreamingLandActivity;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.Gravity;
 
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
+import com.ottapp.android.basemodule.app.GlideApp;
+import com.ottapp.android.basemodule.models.AssetDetaillsDataModel;
+import com.ottapp.android.basemodule.models.AssetVideosDataModel;
+import com.ottapp.android.basemodule.models.AssetsDetailsResponseEvent;
+import com.ottapp.android.basemodule.models.CategoryAssetsList;
+import com.ottapp.android.basemodule.models.CategoryListDataModel;
 import com.ottapp.android.basemodule.models.FavouriteRequestModel;
 import com.ottapp.android.basemodule.models.UserFavouritesModel;
+import com.ottapp.android.basemodule.models.UserProfileModel;
+import com.ottapp.android.basemodule.presenters.fragment.BaseFragmentPresenter;
+import com.ottapp.android.basemodule.services.CategoryService;
+import com.ottapp.android.basemodule.services.MenuServices;
 import com.ottapp.android.basemodule.services.UserFavouriteServices;
+import com.ottapp.android.basemodule.utils.DecodeUrl;
+import com.ottapp.android.basemodule.utils.FilterVideoId;
+import com.ottapp.android.basemodule.utils.ValidatorUrl;
+import com.ottapp.android.basemodule.utils.preference.PreferenceManager;
 import com.tfApp.android.newstv.R;
 import com.tfApp.android.newstv.adaptors.OnYoutubeItemSelectionListener;
 import com.tfApp.android.newstv.adaptors.PlayedDurationListener;
@@ -23,27 +37,6 @@ import com.tfApp.android.newstv.view.activity.MediaStreamingActivityExoPlayer;
 import com.tfApp.android.newstv.view.activity.MenuLeftActivity;
 import com.tfApp.android.newstv.view.fragment.VideoDetailsFragment;
 import com.tfApp.android.newstv.view.fragment.YoutubeVideoGridVideoGridFragment;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.RequestOptions;
-import com.google.gson.Gson;
-import com.ottapp.android.basemodule.app.GlideApp;
-import com.ottapp.android.basemodule.events.ScreenSwitchEvent;
-import com.ottapp.android.basemodule.models.AssetDetaillsDataModel;
-import com.ottapp.android.basemodule.models.AssetVideosDataModel;
-import com.ottapp.android.basemodule.models.AssetsDetailsResponseEvent;
-import com.ottapp.android.basemodule.models.CategoryAssetsList;
-import com.ottapp.android.basemodule.models.CategoryListDataModel;
-import com.ottapp.android.basemodule.models.UserProfileModel;
-import com.ottapp.android.basemodule.presenters.fragment.BaseFragmentPresenter;
-import com.ottapp.android.basemodule.repository.RepoRequestEvent;
-import com.ottapp.android.basemodule.repository.RepoRequestType;
-import com.ottapp.android.basemodule.repository.responses.AssetsModelResponse;
-import com.ottapp.android.basemodule.services.CategoryService;
-import com.ottapp.android.basemodule.services.MenuServices;
-import com.ottapp.android.basemodule.utils.DecodeUrl;
-import com.ottapp.android.basemodule.utils.FilterVideoId;
-import com.ottapp.android.basemodule.utils.ValidatorUrl;
-import com.ottapp.android.basemodule.utils.preference.PreferenceManager;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -57,7 +50,7 @@ import static com.tfApp.android.newstv.view.fragment.InfoFragment.TITLE_TEXT;
 import static com.tfApp.android.newstv.view.fragment.YoutubeVideoGridVideoGridFragment.LOAD_DATA;
 import static com.tfApp.android.newstv.view.fragment.YoutubeVideoGridVideoGridFragment.LOAD_LIST;
 
-public class VideoDetailsFragmentPresenter<I extends VideoDetailFragmentIView> extends BaseFragmentPresenter<I> implements OnYoutubeItemSelectionListener,PlayedDurationListener {
+public class VideoDetailsFragmentPresenter<I extends VideoDetailFragmentIView> extends BaseFragmentPresenter<I> implements OnYoutubeItemSelectionListener, PlayedDurationListener {
     private int maxLimit = 10;
     private int i;
     private AssetVideosDataModel onItemClickVideoData;

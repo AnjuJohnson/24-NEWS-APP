@@ -6,10 +6,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.tfApp.android.newstv.R;
-import com.google.gson.Gson;
 import com.ottapp.android.basemodule.app.GlideApp;
 import com.ottapp.android.basemodule.models.MenuDataModel;
+import com.tfApp.android.newstv.R;
+
 
 import java.util.List;
 

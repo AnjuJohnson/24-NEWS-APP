@@ -6,10 +6,10 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+
 
     <application
-        android:name=".app.FlowersTvApp"
+        android:name="com.tfApp.android.newstv.app.FlowersTvApp"
         android:allowBackup="false"
         android:icon="@drawable/tfapp_icon"
         android:label="@string/app_name"
@@ -17,10 +17,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
-        tools:replace="android:allowBackup">
+        tools:replace="android:allowBackup"
+        android:usesCleartextTraffic="true">
 
         <activity
-            android:name=".view.activity.SplashActivity"
+            android:name="com.tfApp.android.newstv.view.activity.SplashActivity"
             android:alwaysRetainTaskState="true"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
@@ -33,38 +34,38 @@
 
 
         <activity
-            android:name=".view.activity.LoginActivity"
+            android:name="com.tfApp.android.newstv.view.activity.LoginActivity"
             android:alwaysRetainTaskState="true"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/FullScreenTheme" />
         <activity
-            android:name=".view.activity.VerifyOtpActivity"
+            android:name="com.tfApp.android.newstv.view.activity.VerifyOtpActivity"
             android:alwaysRetainTaskState="true"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/FullScreenTheme" />
         <activity
-            android:name=".view.activity.MenuLeftActivity"
+            android:name="com.tfApp.android.newstv.view.activity.MenuLeftActivity"
             android:alwaysRetainTaskState="true"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/Transparent" />
         <activity
-            android:name=".view.activity.SearchActivityScreen"
+            android:name="com.tfApp.android.newstv.view.activity.SearchActivityScreen"
             android:alwaysRetainTaskState="false"
             android:noHistory="true"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/Transparent" />
         <activity
-            android:name=".view.activity.MediaStreamingActivityExoPlayer"
+            android:name="com.tfApp.android.newstv.view.activity.MediaStreamingActivityExoPlayer"
             android:alwaysRetainTaskState="true"
             android:launchMode="singleTask"
             android:screenOrientation="landscape"
             android:theme="@style/FullScreenTheme" />
         <activity
-            android:name=".view.activity.LanguageActivity"
+            android:name="com.tfApp.android.newstv.view.activity.LanguageActivity"
             android:noHistory="true"
             android:alwaysRetainTaskState="true"
             android:label="@string/languages_check"
@@ -72,7 +73,7 @@
             android:screenOrientation="portrait"
             />
         <activity
-            android:name=".view.activity.PollWebActivity"
+            android:name="com.tfApp.android.newstv.view.activity.PollWebActivity"
             android:noHistory="true"
             android:alwaysRetainTaskState="true"
             android:label="@string/poll_check"
@@ -80,10 +81,14 @@
             android:screenOrientation="portrait"
             />
         <activity
-            android:name=".view.activity.HolderActivity"
+            android:name="com.tfApp.android.newstv.view.activity.HolderActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Transparent" />
 
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="9508a709ede4757af13f170746ce728c1f55d4f8" />
     </application>
 
 </manifest>

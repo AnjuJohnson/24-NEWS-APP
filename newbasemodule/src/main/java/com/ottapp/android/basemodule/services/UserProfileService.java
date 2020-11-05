@@ -245,7 +245,6 @@ public class UserProfileService extends BaseService<UserProfileModel> {
                 @SuppressWarnings("unchecked")
                 @Override
                 public void onResponse(@NonNull Call<ResultObject<AboutUsModel>> call, @NonNull Response<ResultObject<AboutUsModel>> response) {
-                    System.out.println("About"+new Gson().toJson(response.body()));
                     if (response.isSuccessful() && response.body() != null) {
                         Log.e("RESULT", response.toString());
                         ResultObject<AboutUsModel> resultObject = response.body();
@@ -286,9 +285,7 @@ public class UserProfileService extends BaseService<UserProfileModel> {
             @SuppressWarnings("unchecked")
             @Override
             public void onResponse(@NonNull Call<ResultObject<LanguageModel>> call, @NonNull Response<ResultObject<LanguageModel>> response) {
-                System.out.println("About"+new Gson().toJson(response.body()));
                 if (response.isSuccessful() && response.body() != null) {
-                    Log.e("RESULT", response.toString());
                     ResultObject<LanguageModel> resultObject = response.body();
                     if (resultObject != null) {
                         if (resultObject.isRequestStatus()) {
@@ -328,7 +325,6 @@ public class UserProfileService extends BaseService<UserProfileModel> {
             @SuppressWarnings("unchecked")
             @Override
             public void onResponse(@NonNull Call<ResultObject<GenreModel>> call, @NonNull Response<ResultObject<GenreModel>> response) {
-                System.out.println("About" + new Gson().toJson(response.body()));
                 if (response.isSuccessful() && response.body() != null) {
                     Log.e("RESULT", response.toString());
                     ResultObject<GenreModel> resultObject = response.body();

@@ -1,6 +1,5 @@
 package com.tfApp.android.newstv.presenter.fragment;
 
-import android.app.Dialog;
 import android.app.Fragment;
 import android.bitryt.com.youtubedataapi.activity.MediaStreamingLandActivity;
 import android.content.Intent;
@@ -11,6 +10,33 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 
+import com.google.gson.Gson;
+import com.kaopiz.kprogresshud.KProgressHUD;
+import com.ottapp.android.basemodule.apis.ResultObject;
+import com.ottapp.android.basemodule.apis.RetrofitEngine;
+import com.ottapp.android.basemodule.models.AssetDetaillsDataModel;
+import com.ottapp.android.basemodule.models.AssetVideosDataModel;
+import com.ottapp.android.basemodule.models.AssetsDetailsResponseEvent;
+import com.ottapp.android.basemodule.models.CategoryAssetsList;
+import com.ottapp.android.basemodule.models.CategoryAssosiationDataModel;
+import com.ottapp.android.basemodule.models.CategoryListDataModel;
+import com.ottapp.android.basemodule.models.FavouriteRequestModel;
+import com.ottapp.android.basemodule.models.GenreModel;
+import com.ottapp.android.basemodule.models.HomeDataModel;
+import com.ottapp.android.basemodule.models.UserFavouritesModel;
+import com.ottapp.android.basemodule.models.UserProfileModel;
+import com.ottapp.android.basemodule.models.VasTagModel;
+import com.ottapp.android.basemodule.presenters.fragment.BaseFragmentPresenter;
+import com.ottapp.android.basemodule.repository.responses.HomeMoreModelResponse;
+import com.ottapp.android.basemodule.services.CategoryService;
+import com.ottapp.android.basemodule.services.GenreService;
+import com.ottapp.android.basemodule.services.MenuServices;
+import com.ottapp.android.basemodule.services.UserFavouriteServices;
+import com.ottapp.android.basemodule.utils.Constants;
+import com.ottapp.android.basemodule.utils.DecodeUrl;
+import com.ottapp.android.basemodule.utils.FilterVideoId;
+import com.ottapp.android.basemodule.utils.ValidatorUrl;
+import com.ottapp.android.basemodule.utils.preference.PreferenceManager;
 import com.tfApp.android.newstv.R;
 import com.tfApp.android.newstv.adaptors.OnYoutubeItemSelectionListener;
 import com.tfApp.android.newstv.adaptors.PlayedDurationListener;
@@ -23,35 +49,6 @@ import com.tfApp.android.newstv.utils.StaticValues;
 import com.tfApp.android.newstv.view.activity.HolderActivity;
 import com.tfApp.android.newstv.view.activity.MenuLeftActivity;
 import com.tfApp.android.newstv.view.fragment.VideoDetailsFragment;
-import com.google.gson.Gson;
-import com.kaopiz.kprogresshud.KProgressHUD;
-import com.ottapp.android.basemodule.apis.ResultObject;
-import com.ottapp.android.basemodule.apis.RetrofitEngine;
-import com.ottapp.android.basemodule.models.AssetDetaillsDataModel;
-import com.ottapp.android.basemodule.models.AssetVideosDataModel;
-import com.ottapp.android.basemodule.models.AssetsDetailsResponseEvent;
-import com.ottapp.android.basemodule.models.CategoryAssosiationDataModel;
-import com.ottapp.android.basemodule.models.CategoryListDataModel;
-import com.ottapp.android.basemodule.models.FavouriteRequestModel;
-import com.ottapp.android.basemodule.models.GenreModel;
-import com.ottapp.android.basemodule.models.HomeDataModel;
-import com.ottapp.android.basemodule.models.UserFavouritesModel;
-import com.ottapp.android.basemodule.models.UserProfileModel;
-import com.ottapp.android.basemodule.models.CategoryAssetsList;
-import com.ottapp.android.basemodule.models.VasTagModel;
-import com.ottapp.android.basemodule.presenters.fragment.BaseFragmentPresenter;
-import com.ottapp.android.basemodule.repository.responses.AssetsModelResponse;
-import com.ottapp.android.basemodule.repository.responses.HomeMoreModelResponse;
-import com.ottapp.android.basemodule.services.AssetMenuService;
-import com.ottapp.android.basemodule.services.CategoryService;
-import com.ottapp.android.basemodule.services.GenreService;
-import com.ottapp.android.basemodule.services.MenuServices;
-import com.ottapp.android.basemodule.services.UserFavouriteServices;
-import com.ottapp.android.basemodule.utils.Constants;
-import com.ottapp.android.basemodule.utils.DecodeUrl;
-import com.ottapp.android.basemodule.utils.FilterVideoId;
-import com.ottapp.android.basemodule.utils.ValidatorUrl;
-import com.ottapp.android.basemodule.utils.preference.PreferenceManager;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -106,12 +103,16 @@ public class HomeFragmentPresenter<I extends HomeFragmentIView> extends BaseFrag
         List<YoutubeSnap> items = new ArrayList<>(1);
         if (getIView().getArgument() != null) {
             int menuId=getIView().getArgument().getInt(LOAD_DATA,1);
+
             data= CategoryService.getServices().getAssetsUnderCategoryMenuAssociation(menuId);
             filteredAssetData = checkFavouriteStatus(data);
-
+            System.out.println("HomePosition"+new Gson().toJson(data));
             String title = getIView().getArgument().getString(TITLE_TEXT);
 //            if (title != null)
 //                getIView().setTitle(title, "#FFFFFF");
+
+
+
         }
         if (filteredAssetData != null)
             for (CategoryAssetsList categoryAssetsList : filteredAssetData) {
@@ -121,12 +122,36 @@ public class HomeFragmentPresenter<I extends HomeFragmentIView> extends BaseFrag
         youtubeSnapAdapter = new VerticalRecyclerAdapter(items, true, this);
         if (getIView() != null) {
             getIView().getRecyclerView().setAdapter(youtubeSnapAdapter);
-            if(youtubeSnapAdapter == null){
+
+
+
+
+
+
+            if((youtubeSnapAdapter!=null)&&(data.size()!=0))  {
+                getIView().getTextView().setVisibility(View.GONE);
+            }
+            else {
+                getIView().getTextView().setVisibility(View.VISIBLE);
+            }
+
+/*
+     if((youtubeSnapAdapter==null)&&(data.size()==0))  {
+         getIView().getTextView().setVisibility(View.VISIBLE);
+     }
+     else {
+         getIView().getTextView().setVisibility(View.GONE);
+     }*/
+
+           /* if(youtubeSnapAdapter == null){
                 getIView().getTextView().setVisibility(View.VISIBLE);
             }else{
                 getIView().getTextView().setVisibility(View.GONE);
-            }
+            }*/
         }
+
+
+
 
         progress_spinner.dismiss();
     }
@@ -146,6 +171,9 @@ public class HomeFragmentPresenter<I extends HomeFragmentIView> extends BaseFrag
         youtubeSnapAdapter.setLiveData(items);
         youtubeSnapAdapter.notifyDataSetChanged();
     }
+
+
+
 
     public void updateLiveDataAssosiation(List<CategoryAssosiationDataModel> category) {
         List<YoutubeSnap> items = new ArrayList<>(1);

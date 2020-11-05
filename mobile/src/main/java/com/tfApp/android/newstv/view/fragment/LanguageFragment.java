@@ -15,17 +15,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.ottapp.android.basemodule.models.LanguageViewModel;
+import com.ottapp.android.basemodule.view.base.fragment.BaseFragment;
 import com.tfApp.android.newstv.R;
 import com.tfApp.android.newstv.presenter.fragment.LanguagePresenter;
 import com.tfApp.android.newstv.presenter.fragment.iview.LanguageFragmentIView;
 import com.tfApp.android.newstv.view.activity.HolderActivity;
-import com.tfApp.android.newstv.view.activity.LanguageActivity;
-import com.tfApp.android.newstv.view.activity.MenuLeftActivity;
-import com.ottapp.android.basemodule.models.CategoryViewModel;
-import com.ottapp.android.basemodule.models.LanguageViewModel;
-import com.ottapp.android.basemodule.view.base.fragment.BaseFragment;
 
-public class LanguageFragment extends BaseFragment<LanguagePresenter<LanguageFragmentIView>,LanguageFragmentIView> implements LanguageFragmentIView {
+public class LanguageFragment extends BaseFragment<LanguagePresenter<LanguageFragmentIView>, LanguageFragmentIView> implements LanguageFragmentIView {
    private  View view;
     @Nullable
     @Override

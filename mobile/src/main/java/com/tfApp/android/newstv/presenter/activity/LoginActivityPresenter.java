@@ -1,20 +1,19 @@
 package com.tfApp.android.newstv.presenter.activity;
 
 
-import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.tfApp.android.newstv.presenter.activity.iview.LoginActivityIView;
-import com.tfApp.android.newstv.utils.ProgressDialog;
-import com.tfApp.android.newstv.utils.StaticValues;
-import com.tfApp.android.newstv.utils.Validations;
 import com.kaopiz.kprogresshud.KProgressHUD;
 import com.ottapp.android.basemodule.models.RequestOtp;
 import com.ottapp.android.basemodule.presenters.activity.BaseActivityPresenter;
 import com.ottapp.android.basemodule.repository.RepoRequestEvent;
 import com.ottapp.android.basemodule.repository.RepoRequestType;
 import com.ottapp.android.basemodule.repository.responses.GenerateOtpResponse;
+import com.tfApp.android.newstv.presenter.activity.iview.LoginActivityIView;
+import com.tfApp.android.newstv.utils.ProgressDialog;
+import com.tfApp.android.newstv.utils.StaticValues;
+import com.tfApp.android.newstv.utils.Validations;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -85,7 +84,7 @@ public class LoginActivityPresenter<I extends LoginActivityIView> extends BaseAc
     //to call the otp request
     private void generateOtpRequest() {
 
-        RequestOtp requestOtp = new RequestOtp(StaticValues.mobileNumber, StaticValues.emailId,StaticValues.device,StaticValues.model,StaticValues.version);
+        RequestOtp requestOtp = new RequestOtp(StaticValues.mobileNumber, StaticValues.emailId, StaticValues.device, StaticValues.model, StaticValues.version);
         RepoRequestEvent repoRequestEvent = new RepoRequestEvent<>(RepoRequestType.REQUEST_TYPE_USER_PROFILE, requestOtp);
         EventBus.getDefault().post(repoRequestEvent);
 

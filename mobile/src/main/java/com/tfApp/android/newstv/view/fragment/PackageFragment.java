@@ -14,11 +14,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ottapp.android.basemodule.view.base.fragment.BaseFragment;
 import com.tfApp.android.newstv.R;
 import com.tfApp.android.newstv.presenter.fragment.PackageFragmentPresenter;
 import com.tfApp.android.newstv.presenter.fragment.iview.PackageFragmentIView;
 import com.tfApp.android.newstv.view.activity.HolderActivity;
-import com.ottapp.android.basemodule.view.base.fragment.BaseFragment;
 
 /**
  * Created by George PJ on 22-02-2018.

@@ -9,16 +9,16 @@
         android:id="@+id/lv_top"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_200sdp"
-        android:visibility="gone"
-        android:background="@null" />
+        android:background="@null"
+        android:visibility="gone" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_8sdp"
-        android:layout_marginEnd="@dimen/_10sdp"
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
         android:orientation="horizontal">
 
         <TextView
@@ -28,9 +28,10 @@
             android:layout_alignParentStart="true"
             android:layout_marginEnd="@dimen/_5sdp"
             android:layout_toLeftOf="@+id/lv_more"
-            android:text="@string/app_name"
             android:fontFamily="@font/montserrat"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+            android:text="@string/app_name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textSize="@dimen/_13sdp" />
 
         <com.balysv.materialripple.MaterialRippleLayout
             android:id="@+id/lv_more"
@@ -48,11 +49,11 @@
                 android:id="@+id/tv_more"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/more"
-                android:textColor="@color/white_variant"
-                android:textSize="@dimen/_10ssp"
                 android:fontFamily="@font/montserrat"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+                android:text="@string/more"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@color/white_variant"
+                android:textSize="@dimen/_10ssp" />
         </com.balysv.materialripple.MaterialRippleLayout>
     </RelativeLayout>
 
@@ -61,8 +62,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clipToPadding="false"
-        android:minHeight="@dimen/_84sdp"
         android:filterTouchesWhenObscured="true"
+        android:minHeight="@dimen/_84sdp"
         android:overScrollMode="ifContentScrolls"
         android:padding="4dp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_20sdp">
+
+    </LinearLayout>
 </LinearLayout>

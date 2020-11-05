@@ -183,7 +183,6 @@ public class MenuServices extends BaseService<MenuDataModel>{
                     if (data != null && data.isRequestStatus()) {
                         insertAll(data.getList());
                         if (callbackNeeded)
-                            System.out.println("menusssss:"+data.getList());
                             EventBus.getDefault().post(new MenuModelResponse(data.getList(), data.isRequestStatus()));
                     } else {
                         if (callbackNeeded)

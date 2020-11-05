@@ -13,8 +13,6 @@ public abstract class UserProfileDataDao implements BaseDao<UserProfileModel> {
     @Query("SELECT * FROM UserProfileModel ")
     public abstract List<UserProfileModel> getAll();
 
-
-
     @Query("SELECT count(*) FROM UserProfileModel ")
     public abstract int getAllActiveCount();
 }

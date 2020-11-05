@@ -3,7 +3,6 @@ package com.tfApp.android.newstv.adaptors;
 
 
 
-import com.ottapp.android.basemodule.models.AssetVideosDataModel;
 import com.ottapp.android.basemodule.models.LanguageModel;
 
 /**

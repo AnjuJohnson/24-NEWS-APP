@@ -8,11 +8,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.tfApp.android.newstv.R;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.ottapp.android.basemodule.app.GlideApp;
 import com.ottapp.android.basemodule.models.AssetVideosDataModel;
+import com.tfApp.android.newstv.R;
 
 import java.util.List;
 
@@ -64,17 +64,11 @@ public class YoutubeItemAdapter extends RecyclerView.Adapter<YoutubeItemAdapter.
                 holder.iv_favourite.setBackgroundResource(R.drawable.ic_favorite_inactive);
                 media.setFavourite(0);
             }
-          /*  } else {
-                if (media.getFavourite() == 1) {
-                    holder.iv_favourite.setBackgroundResource(R.drawable.ic_favorite_active);
-                } else {
-                    holder.iv_favourite.setBackgroundResource(R.drawable.ic_favorite_inactive);
-                }
-            }*/
-
 
             if (position == getItemCount() - 1 ) {
                 if (onItemSelectionListener != null)
+
+                    System.out.println("moreitem_2"+"222");
                     onItemSelectionListener.onMoreItemsNeeded();
             }
         }

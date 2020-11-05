@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "984495432521",
-    "firebase_url": "https://flowerstvott.firebaseio.com",
-    "project_id": "flowerstvott",
-    "storage_bucket": "flowerstvott.appspot.com"
+    "project_number": "859253003645",
+    "firebase_url": "https://newsotts.firebaseio.com",
+    "project_id": "newsotts",
+    "storage_bucket": "newsotts.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:984495432521:android:ffff7d896baa47d1",
+        "mobilesdk_app_id": "1:859253003645:android:ba288ec84750f704",
         "android_client_info": {
-          "package_name": "com.ott.android.flowerstv"
+          "package_name": "com.ott.android.newstv"
         }
       },
       "oauth_client": [
         {
-          "client_id": "984495432521-bdmh9nkqont9t1bc86c1uns8cq2o5b7r.apps.googleusercontent.com",
+          "client_id": "859253003645-ftlu2thrbf001k49ro7hhednqdudnuf6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBjV-J5IFiBfPNs2Y-59pd0rY6mazUnCB0"
+          "current_key": "AIzaSyAvs-08yyiEsz7DKAPppZ2KGXnqaDY-pHw"
         }
       ],
       "services": {

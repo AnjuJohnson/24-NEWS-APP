@@ -3,10 +3,6 @@ package com.tfApp.android.newstv.presenter.activity;
 
 import android.widget.Toast;
 
-import com.tfApp.android.newstv.presenter.activity.iview.VerifyOtpActivityIView;
-import com.tfApp.android.newstv.utils.ProgressDialog;
-import com.tfApp.android.newstv.utils.StaticValues;
-import com.tfApp.android.newstv.utils.Validations;
 import com.kaopiz.kprogresshud.KProgressHUD;
 import com.ottapp.android.basemodule.models.ConfirmOtp;
 import com.ottapp.android.basemodule.presenters.activity.BaseActivityPresenter;
@@ -17,6 +13,10 @@ import com.ottapp.android.basemodule.repository.responses.GenerateConfirmOtpResp
 import com.ottapp.android.basemodule.repository.responses.GenerateOtpResponse;
 import com.ottapp.android.basemodule.services.UserFavouriteServices;
 import com.ottapp.android.basemodule.utils.preference.PreferenceManager;
+import com.tfApp.android.newstv.presenter.activity.iview.VerifyOtpActivityIView;
+import com.tfApp.android.newstv.utils.ProgressDialog;
+import com.tfApp.android.newstv.utils.StaticValues;
+import com.tfApp.android.newstv.utils.Validations;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;

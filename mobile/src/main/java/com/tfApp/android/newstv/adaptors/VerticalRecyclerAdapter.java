@@ -13,9 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.tfApp.android.newstv.R;
 import com.ottapp.android.basemodule.models.CategoryListDataModel;
 import com.ottapp.android.basemodule.services.CategoryService;
+import com.tfApp.android.newstv.R;
 
 import java.util.List;
 
@@ -84,15 +84,6 @@ public class VerticalRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
                     cellViewHolder.mRecyclerView.setLayoutManager(layoutManager);
                     cellViewHolder.mRecyclerView.setNestedScrollingEnabled(false);
                     if (snap.getPlayListModel() != null) {
-
-//                        if(snap.getPlayListModel().getAssetVideos().size()>2){
-//                           ((CellViewHolder) viewHolder).tvMore.setVisibility(View.VISIBLE);
-//                        }else{
-//                            ((CellViewHolder) viewHolder).tvMore.setVisibility(View.GONE);
-//                        }
-//                        HorizontalRecyclerAdapter adapter = new HorizontalRecyclerAdapter(snap.getPlayListModel().getAssetVideos(), onItemSelectionListener);
-//                        if (cellViewHolder.mRecyclerView != null)
-//                            cellViewHolder.mRecyclerView.setAdapter(adapter);
                         if(position==0){
                             HorizontalNewRecyclerAdapter adapter = new HorizontalNewRecyclerAdapter(snap.getPlayListModel().getAssetVideos(), onItemSelectionListener);
                             if (cellViewHolder.mRecyclerView != null)

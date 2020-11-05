@@ -207,11 +207,8 @@ public class CategoryService extends BaseService<CategoryListDataModel> {
         if (categoryLists != null) {
             for (CategoryListDataModel cm : categoryLists) {
                 CategoryAssetsList categoryAssetsList = new CategoryAssetsList();
-                //System.out.println("categoryId:"+new Gson().toJson(categoryLists));
-                //System.out.println("AsstsNew:"+new Gson().toJson(AssetMenuService.getServices().getAll()));
                 List<AssetVideosDataModel> model = AssetMenuService.getServices().getAssetsUnderCategory(cm.getId(), 10);
-                System.out.println("categoryId"+cm.getId());//Collections.sort(model, new AssetsOrderComparator());
-                System.out.println("assetsList"+new Gson().toJson(model));
+
                 if(!model.isEmpty() ) {
                     categoryAssetsList.setCategories(cm);
                     categoryAssetsList.setAssetVideos(model);

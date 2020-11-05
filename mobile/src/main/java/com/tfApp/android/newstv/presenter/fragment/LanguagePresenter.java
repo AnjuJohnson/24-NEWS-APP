@@ -1,27 +1,20 @@
 package com.tfApp.android.newstv.presenter.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
-import com.tfApp.android.newstv.R;
-import com.tfApp.android.newstv.adaptors.AutoFitGridLayoutManager;
-import com.tfApp.android.newstv.adaptors.LanguageAdapter;
-import com.tfApp.android.newstv.adaptors.OnLanguageSelectionListener;
-import com.tfApp.android.newstv.adaptors.YoutubeItemAdapter;
-import com.tfApp.android.newstv.presenter.fragment.iview.HomeFragmentIView;
-import com.tfApp.android.newstv.presenter.fragment.iview.LanguageFragmentIView;
 import com.google.gson.Gson;
 import com.ottapp.android.basemodule.models.LanguageModel;
 import com.ottapp.android.basemodule.presenters.fragment.BaseFragmentPresenter;
 import com.ottapp.android.basemodule.repository.RepoRequestEvent;
 import com.ottapp.android.basemodule.repository.RepoRequestType;
 import com.ottapp.android.basemodule.repository.responses.LanguageResponseEvent;
-import com.ottapp.android.basemodule.repository.responses.VersionResponse;
 import com.ottapp.android.basemodule.services.AssetMenuService;
 import com.ottapp.android.basemodule.services.LanguageService;
-import com.ottapp.android.basemodule.view.iview.fragment.BaseFragmentIView;
+import com.tfApp.android.newstv.adaptors.LanguageAdapter;
+import com.tfApp.android.newstv.adaptors.OnLanguageSelectionListener;
+import com.tfApp.android.newstv.presenter.fragment.iview.LanguageFragmentIView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;

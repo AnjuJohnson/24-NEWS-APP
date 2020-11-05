@@ -5,6 +5,12 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 
+import com.ottapp.android.basemodule.models.AssetVideosDataModel;
+import com.ottapp.android.basemodule.models.CategoryAssetsList;
+import com.ottapp.android.basemodule.models.MenuDataModel;
+import com.ottapp.android.basemodule.presenters.fragment.BaseFragmentPresenter;
+import com.ottapp.android.basemodule.services.MenuServices;
+import com.ottapp.android.basemodule.view.base.fragment.BaseFragment;
 import com.tfApp.android.newstv.R;
 import com.tfApp.android.newstv.adaptors.TopNavigationAdapter;
 import com.tfApp.android.newstv.adaptors.VerticalRecyclerAdapter;
@@ -15,12 +21,6 @@ import com.tfApp.android.newstv.view.fragment.FavouriteVideoGridFragment;
 import com.tfApp.android.newstv.view.fragment.HtmlViewFragment;
 import com.tfApp.android.newstv.view.fragment.InfoFragment;
 import com.tfApp.android.newstv.view.fragment.YoutubeVideoGridVideoGridFragment;
-import com.ottapp.android.basemodule.models.AssetVideosDataModel;
-import com.ottapp.android.basemodule.models.CategoryAssetsList;
-import com.ottapp.android.basemodule.models.MenuDataModel;
-import com.ottapp.android.basemodule.presenters.fragment.BaseFragmentPresenter;
-import com.ottapp.android.basemodule.services.MenuServices;
-import com.ottapp.android.basemodule.view.base.fragment.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;

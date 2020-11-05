@@ -1,11 +1,8 @@
 package com.tfApp.android.newstv.requests;
 
 
-import com.tfApp.android.newstv.models.BrandKeyResponseModel;
-import com.tfApp.android.newstv.models.VersionModel;
 import com.ottapp.android.basemodule.apis.ResultObject;
 import com.ottapp.android.basemodule.models.AssetDetaillsDataModel;
-import com.ottapp.android.basemodule.models.AssetVideosDataModel;
 import com.ottapp.android.basemodule.models.CategoryAssosiationDataModel;
 import com.ottapp.android.basemodule.models.CategoryListDataModel;
 import com.ottapp.android.basemodule.models.ConfirmOtp;
@@ -14,6 +11,8 @@ import com.ottapp.android.basemodule.models.HomeDataModel;
 import com.ottapp.android.basemodule.models.MenuDataModel;
 import com.ottapp.android.basemodule.models.RequestOtp;
 import com.ottapp.android.basemodule.models.UserProfileModel;
+import com.tfApp.android.newstv.models.BrandKeyResponseModel;
+import com.tfApp.android.newstv.models.VersionModel;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

@@ -16,14 +16,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.balysv.materialripple.MaterialRippleLayout;
-import com.tfApp.android.newstv.R;
-import com.tfApp.android.newstv.presenter.activity.LoginActivityPresenter;
-import com.tfApp.android.newstv.presenter.activity.iview.LoginActivityIView;
-import com.tfApp.android.newstv.utils.StaticValues;
 import com.kaopiz.kprogresshud.KProgressHUD;
 import com.ottapp.android.basemodule.events.OTPReceivedEvent;
 import com.ottapp.android.basemodule.receiver.OTPBroadcastReceiver;
 import com.ottapp.android.basemodule.view.base.activity.BaseActivity;
+import com.tfApp.android.newstv.R;
+import com.tfApp.android.newstv.presenter.activity.LoginActivityPresenter;
+import com.tfApp.android.newstv.presenter.activity.iview.LoginActivityIView;
+import com.tfApp.android.newstv.utils.StaticValues;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -57,12 +57,15 @@ public class LoginActivity extends BaseActivity<LoginActivityPresenter<LoginActi
         }
         MaterialRippleLayout btn_proceed = findViewById(R.id.btn_proceed);
         btn_proceed.setOnClickListener(v -> getPresenter().checkAndProceed());
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS)
+
+        receiveSMSForOTP();
+        /////changed permissiom
+       /* if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS)
                 != PackageManager.PERMISSION_GRANTED) {
             proceedWithPermissionRequest();
         } else {
             receiveSMSForOTP();
-        }
+        }*/
     }
 
     private static final int MY_PERMISSIONS_REQUEST_RECEIVE_SMS = 123;
@@ -206,7 +209,10 @@ public class LoginActivity extends BaseActivity<LoginActivityPresenter<LoginActi
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     receiveSMSForOTP();
                 } else {
-                    showDeniedForReceiveSMS();
+
+
+                    /////changed
+               //     showDeniedForReceiveSMS();
                 }
             }
         }

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+
 import com.tfApp.android.newstv.R;
 import com.tfApp.android.newstv.app.FlowersTvApp;
 import com.tfApp.android.newstv.models.PopupMenuItem;
@@ -181,7 +182,6 @@ public class TopNavigationAdapter extends RecyclerView.Adapter<TopNavigationAdap
         ViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
-            //itemView.setBackgroundColor(Color.TRANSPARENT);
             nameTextView = itemView.findViewById(R.id.tv_title);
 
         }

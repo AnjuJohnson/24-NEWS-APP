@@ -14,10 +14,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ottapp.android.basemodule.app.GlideApp;
 import com.tfApp.android.newstv.R;
 import com.tfApp.android.newstv.app.FlowersTvApp;
 import com.tfApp.android.newstv.models.PopupMenuItem;
-import com.ottapp.android.basemodule.app.GlideApp;
 
 import java.util.List;
 
@@ -196,7 +196,6 @@ public class BottomNavigationAdapter extends RecyclerView.Adapter<BottomNavigati
         ViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
-            //itemView.setBackgroundColor(Color.TRANSPARENT);
             imageView = itemView.findViewById(R.id.iv_icon);
             nameTextView = itemView.findViewById(R.id.tv_title);
             imageView.setImageTintList(themeColorStateList);
@@ -208,15 +207,16 @@ public class BottomNavigationAdapter extends RecyclerView.Adapter<BottomNavigati
             if (pos == maximumMenuLength - 1) {
                 showListMenu(v);
             } else {
-                PopupMenuItem menuItem = menuModels.get(pos);
-                setSelected(pos);
-                setSelectedInOptions(-1);
-                if (onOptionSelectedListener != null) {
-                    onOptionSelectedListener.onOptionSelected(menuItem, 0);
+                if (menuModels.get(pos) != null) {
+                    PopupMenuItem menuItem = menuModels.get(pos);
+                    setSelected(pos);
+                    setSelectedInOptions(-1);
+                    if (onOptionSelectedListener != null) {
+                        onOptionSelectedListener.onOptionSelected(menuItem, 0);
+                    }
                 }
             }
         }
     }
-
 }
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_marginRight="@dimen/_5sdp"
     android:background="#502b2626"
     android:clickable="true"
@@ -16,6 +16,7 @@
         android:gravity="center"
         android:orientation="vertical"
         android:padding="@dimen/_1sdp">
+
         <android.support.v7.widget.CardView
             android:id="@+id/card_view"
             android:layout_width="wrap_content"
@@ -23,65 +24,72 @@
             card_view:cardCornerRadius="10dp"
             card_view:cardElevation="4dp"
             card_view:cardMaxElevation="6dp">
-        <RelativeLayout
-            android:layout_width="@dimen/_150sdp"
-            android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/imageView"
+            <RelativeLayout
                 android:layout_width="@dimen/_150sdp"
-                android:layout_height="@dimen/_84sdp"
-                android:background="#50000000"
-                android:scaleType="centerCrop" />
-
-            <LinearLayout
-                android:layout_width="@dimen/_150sdp"
-                android:layout_height="@dimen/_84sdp"
-                android:background="@color/black_video_overlay"
-                android:gravity="center">
+                android:layout_height="wrap_content">
 
                 <ImageView
-                    android:layout_width="@dimen/_45sdp"
-                    android:layout_height="@dimen/_45sdp"
-                    android:src="@drawable/ic_action_play" />
-            </LinearLayout>
-        </RelativeLayout>
-        </android.support.v7.widget.CardView>
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+                    android:id="@+id/imageView"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="@dimen/_84sdp"
+                    android:background="#50000000"
+                    android:scaleType="centerCrop" />
 
-    <TextView
-        android:id="@+id/nameTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="@dimen/_4sdp"
-        android:layout_marginEnd="@dimen/_2sdp"
-        android:layout_marginStart="@dimen/_4sdp"
-        android:layout_marginTop="@dimen/_4sdp"
-        android:gravity="center_vertical"
-        android:layout_toStartOf="@+id/iv_favourite"
-        android:maxLines="2"
-        android:minHeight="@dimen/_25sdp"
-        android:textColor="@color/white"
-        android:fontFamily="@font/montserrat"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:textSize="@dimen/_10sdp" />
-    <ImageView
-        android:id="@+id/iv_favourite"
-        android:layout_width="@dimen/_20sdp"
-        android:layout_height="@dimen/_20sdp"
-        android:layout_centerInParent="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="@dimen/_4sdp"
-        android:layout_marginEnd="@dimen/_4sdp"
-        android:layout_marginStart="@dimen/_2sdp"
-        android:layout_marginTop="@dimen/_4sdp"
-        android:background="@drawable/ic_favorite_inactive"
-        android:contentDescription="@string/app_name" />
-</RelativeLayout>
+                <LinearLayout
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="@dimen/_84sdp"
+                    android:background="@color/black_video_overlay"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="@dimen/_45sdp"
+                        android:layout_height="@dimen/_45sdp"
+                        android:src="@drawable/ic_action_play" />
+                </LinearLayout>
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/nameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginEnd="@dimen/_2sdp"
+                android:layout_marginBottom="@dimen/_4sdp"
+                android:layout_toStartOf="@+id/iv_favourite"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center_vertical"
+                android:maxLines="2"
+                android:minHeight="@dimen/_25sdp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_10sdp" />
+
+            <ImageView
+                android:id="@+id/iv_favourite"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginEnd="@dimen/_4sdp"
+                android:layout_marginBottom="@dimen/_4sdp"
+                android:background="@drawable/ic_favorite_inactive"
+                android:contentDescription="@string/app_name" />
+        </RelativeLayout>
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_18sdp"
+        android:background="@color/black"></LinearLayout>
 
 </LinearLayout>

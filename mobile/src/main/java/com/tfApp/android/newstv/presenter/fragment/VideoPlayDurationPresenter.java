@@ -1,16 +1,15 @@
 package com.tfApp.android.newstv.presenter.fragment;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
-import com.tfApp.android.newstv.adaptors.PlayedDurationListener;
-import com.tfApp.android.newstv.requests.ApiRequests;
 import com.ottapp.android.basemodule.apis.ResultObject;
 import com.ottapp.android.basemodule.apis.RetrofitEngine;
 import com.ottapp.android.basemodule.models.AssetDetaillsDataModel;
 import com.ottapp.android.basemodule.models.AssetVideosDataModel;
 import com.ottapp.android.basemodule.models.AssetsDetailsResponseEvent;
 import com.ottapp.android.basemodule.utils.preference.PreferenceManager;
+import com.tfApp.android.newstv.adaptors.PlayedDurationListener;
+import com.tfApp.android.newstv.requests.ApiRequests;
 
 import org.greenrobot.eventbus.EventBus;
 

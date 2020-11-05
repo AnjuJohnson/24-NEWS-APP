@@ -2,10 +2,11 @@
     package="com.ottapp.android.basemodule" >
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+
     <application>
         <receiver android:name=".receiver.UpdateRequestReceiver"/>
         <receiver
             android:name="com.ottapp.android.basemodule.receiver.OTPBroadcastReceiver"
             android:exported="false" />
+
     </application></manifest>

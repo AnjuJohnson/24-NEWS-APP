@@ -1,14 +1,11 @@
 package com.tfApp.android.newstv.view.activity;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageManager;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -18,14 +15,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.balysv.materialripple.MaterialRippleLayout;
-import com.tfApp.android.newstv.R;
-import com.tfApp.android.newstv.presenter.activity.VerifyOtpActivityPresenter;
-import com.tfApp.android.newstv.presenter.activity.iview.VerifyOtpActivityIView;
-import com.tfApp.android.newstv.utils.StaticValues;
 import com.kaopiz.kprogresshud.KProgressHUD;
 import com.ottapp.android.basemodule.events.OTPReceivedEvent;
 import com.ottapp.android.basemodule.receiver.OTPBroadcastReceiver;
 import com.ottapp.android.basemodule.view.base.activity.BaseActivity;
+import com.tfApp.android.newstv.R;
+import com.tfApp.android.newstv.presenter.activity.VerifyOtpActivityPresenter;
+import com.tfApp.android.newstv.presenter.activity.iview.VerifyOtpActivityIView;
+import com.tfApp.android.newstv.utils.StaticValues;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -51,7 +48,6 @@ public class VerifyOtpActivity extends BaseActivity<VerifyOtpActivityPresenter<V
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_verify_otp);
-        //getPresenter()=initializePresenter();
         TextView tv_mobile = findViewById(R.id.tv_mobile);
         tv_mobile.setText(StaticValues.mobileNumber);
         tv_resend = findViewById(R.id.tv_resend);
@@ -66,10 +62,17 @@ public class VerifyOtpActivity extends BaseActivity<VerifyOtpActivityPresenter<V
         if (otp != null) {
             edit_otp.setText(otp);
             btn_proceed.performClick();
-        } else if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS)
-                == PackageManager.PERMISSION_GRANTED) {
+
+        }
+        else {
             receiveSMSForOTP();
         }
+
+
+      /*  else if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS)
+                == PackageManager.PERMISSION_GRANTED) {
+            receiveSMSForOTP();
+        }*/
 
         if(!EventBus.getDefault().isRegistered(this)){
             EventBus.getDefault().register(this);
@@ -140,12 +143,10 @@ public class VerifyOtpActivity extends BaseActivity<VerifyOtpActivityPresenter<V
 
     @Override
     public void switchToNextScreen() {
-        Intent intent = new Intent(VerifyOtpActivity.this,LanguageActivity.class);
+        Intent intent = new Intent(VerifyOtpActivity.this, LanguageActivity.class);
         intent.putExtra("set_language","SelectLanguage");
         startActivity(intent);
         finish();
-//        startActivity(new Intent(VerifyOtpActivity.this, MenuLeftActivity.class));
-//        finish();
     }
 
     @Override

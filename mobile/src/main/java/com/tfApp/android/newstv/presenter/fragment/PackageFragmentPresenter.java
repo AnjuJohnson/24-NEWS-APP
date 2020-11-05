@@ -3,49 +3,27 @@ package com.tfApp.android.newstv.presenter.fragment;
 import android.bitryt.com.youtubedataapi.activity.MediaStreamingLandActivity;
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
-import android.view.Gravity;
 import android.view.View;
 
+import com.ottapp.android.basemodule.models.AssetVideosDataModel;
+import com.ottapp.android.basemodule.models.FavouriteRequestModel;
+import com.ottapp.android.basemodule.models.PackageModel;
+import com.ottapp.android.basemodule.models.UserProfileModel;
+import com.ottapp.android.basemodule.presenters.fragment.BaseFragmentPresenter;
+import com.ottapp.android.basemodule.services.UserFavouriteServices;
+import com.ottapp.android.basemodule.utils.preference.PreferenceManager;
+
 import com.tfApp.android.newstv.R;
-import com.tfApp.android.newstv.adaptors.ComingSoonItemAdapter;
-import com.tfApp.android.newstv.adaptors.OnYoutubeItemSelectionListener;
 import com.tfApp.android.newstv.adaptors.PackageAdapter;
 import com.tfApp.android.newstv.adaptors.PackageItemSelectionListener;
 import com.tfApp.android.newstv.adaptors.PlayedDurationListener;
-import com.tfApp.android.newstv.adaptors.VerticalRecyclerAdapter;
-import com.tfApp.android.newstv.adaptors.YoutubeSnap;
-import com.tfApp.android.newstv.presenter.fragment.iview.ComingSoonFragmentIView;
 import com.tfApp.android.newstv.presenter.fragment.iview.PackageFragmentIView;
-import com.tfApp.android.newstv.utils.FilterVideoId;
 import com.tfApp.android.newstv.utils.StaticValues;
-import com.tfApp.android.newstv.view.activity.MenuLeftActivity;
-import com.ottapp.android.basemodule.models.AssetVideosDataModel;
-import com.ottapp.android.basemodule.models.CategoryAssetsList;
-import com.ottapp.android.basemodule.models.CategoryListDataModel;
-import com.ottapp.android.basemodule.models.FavouriteRequestModel;
-import com.ottapp.android.basemodule.models.MoreItemRequestServiceModel;
-import com.ottapp.android.basemodule.models.PackageModel;
-import com.ottapp.android.basemodule.models.UserFavouritesModel;
-import com.ottapp.android.basemodule.models.UserProfileModel;
-import com.ottapp.android.basemodule.presenters.fragment.BaseFragmentPresenter;
-import com.ottapp.android.basemodule.repository.RepoRequestEvent;
-import com.ottapp.android.basemodule.repository.RepoRequestType;
-import com.ottapp.android.basemodule.repository.responses.AssetsMoreListResponse;
-import com.ottapp.android.basemodule.services.CategoryService;
-import com.ottapp.android.basemodule.services.UserFavouriteServices;
-import com.ottapp.android.basemodule.utils.DecodeUrl;
-import com.ottapp.android.basemodule.utils.preference.PreferenceManager;
 
 import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.tfApp.android.newstv.view.fragment.YoutubeVideoGridVideoGridFragment.KEY_LOADER_TYPE;
-import static com.tfApp.android.newstv.view.fragment.YoutubeVideoGridVideoGridFragment.LOAD_DATA;
-import static com.tfApp.android.newstv.view.fragment.YoutubeVideoGridVideoGridFragment.TITLE_TEXT;
 
 public class PackageFragmentPresenter<I extends PackageFragmentIView> extends BaseFragmentPresenter<I> implements PackageItemSelectionListener, PlayedDurationListener {
 

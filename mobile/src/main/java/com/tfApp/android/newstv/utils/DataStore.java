@@ -2,15 +2,14 @@ package com.tfApp.android.newstv.utils;
 
 import android.arch.lifecycle.Observer;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
-import com.tfApp.android.newstv.models.BrandKeyResponseModel;
 import com.ottapp.android.basemodule.models.AssetVideosDataModel;
 import com.ottapp.android.basemodule.models.CategoryAssosiationDataModel;
 import com.ottapp.android.basemodule.models.CategoryListDataModel;
 import com.ottapp.android.basemodule.models.MenuDataModel;
 import com.ottapp.android.basemodule.services.CategoryAssociationsService;
 import com.ottapp.android.basemodule.services.CategoryService;
+import com.tfApp.android.newstv.models.BrandKeyResponseModel;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -102,36 +101,6 @@ public final class DataStore {
         this.maxLimit = maxLimit;
     }
 
-    /*public List<CategoryAssetsList> getPlayListByAction(String _id) {
-        List<CategoryAssetsList> videoLists = new ArrayList<>();
-        Map<String, List<CategoryListDataModel>> screenMapping = getScreenPlayListMappingV2();
-        List<CategoryListDataModel> categoryModels = screenMapping.get(_id);
-        List<CategoryAssetsList> videosList = new ArrayList<>();
-        List<AssetVideosDataModel> playListModels = new ArrayList<>();
-        if(categoryModels!= null && !categoryModels.isEmpty())
-            for (CategoryListDataModel cm : categoryModels) {
-                int playListId = getCategoryById(cm.getId());
-                CategoryAssetsList categoryAssetsList = new CategoryAssetsList();
-                List<AssetVideosDataModel> model = AssetMenuService.getServices().getAssetsUnderCategory(playListId);
-                categoryAssetsList.setCategories(cm);
-                categoryAssetsList.setAssetVideos(model);
-                videoLists.add(categoryAssetsList);
-
-//                logLargeString(new Gson().toJson(videoLists));
-               // playListModels.add(model);
-
-
-                        }
-        return videoLists;
-    }*/
-    public void logLargeString(String str) {
-        if(str.length() > 3000) {
-            Log.i(TAG, str.substring(0, 3000));
-            logLargeString(str.substring(3000));
-        } else {
-            Log.i(TAG, str); // continuation
-        }
-    }
     private int getCategoryById(Integer id) {
         List<CategoryListDataModel> allCategories = CategoryService.getServices().getAll();
         for (CategoryListDataModel categoryModel : allCategories

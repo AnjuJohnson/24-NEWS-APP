@@ -8,8 +8,8 @@ import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.tfApp.android.newstv.presenter.fragment.iview.HtmlViewerFragmentIView;
 import com.ottapp.android.basemodule.presenters.fragment.BaseFragmentPresenter;
+import com.tfApp.android.newstv.presenter.fragment.iview.HtmlViewerFragmentIView;
 
 public class HtmlViewerFragmentPresenter<I extends HtmlViewerFragmentIView> extends BaseFragmentPresenter<I> {
     public HtmlViewerFragmentPresenter(I iView) {
